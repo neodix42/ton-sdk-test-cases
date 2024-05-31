@@ -1,0 +1,127 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "testCases": {
+      "type": "object",
+      "patternProperties": {
+        "^[a-zA-Z0-9_-]+$": {
+          "type": "object",
+          "patternProperties": {
+            "^[0-9]+$": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "anyOf": [
+                    {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "object",
+                      "minProperties": 1
+                    }
+                  ]
+                },
+                "description": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "referenceScript": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "input": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9_-]+$"
+                  },
+                  "patternProperties": {
+                    "^[a-zA-Z0-9_-]+$": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "object",
+                          "minProperties": 1
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1
+                        },
+                        {
+                          "type": "boolean",
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "expectedOutput": {
+                  "type": "object",
+                  "minProperties": 1,
+                  "propertyNames": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "^[a-zA-Z0-9_-]+$"
+                  },
+                  "patternProperties": {
+                    "^[a-zA-Z0-9_-]+$": {
+                      "anyOf": [
+                        {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        {
+                          "type": "integer"
+                        },
+                        {
+                          "type": "object",
+                          "minProperties": 1
+                        },
+                        {
+                          "type": "array",
+                          "minItems": 1
+                        },
+                        {
+                          "type": "boolean",
+                          "minItems": 1
+                        }
+                      ]
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "required": [
+                "id",
+                "description",
+                "input",
+                "expectedOutput"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "testCases"
+  ],
+  "additionalProperties": false
+}
