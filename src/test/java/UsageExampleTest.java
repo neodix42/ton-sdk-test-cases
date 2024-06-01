@@ -34,7 +34,7 @@ public class UsageExampleTest {
         TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("wallets").get("9");
+        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("9");
 
         // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
         String testId = testCase.getId();
@@ -89,7 +89,7 @@ public class UsageExampleTest {
         TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("wallets").get("10");
+        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("10");
 
         // print test case details
         log.info("TestCase: {}", testCase);
@@ -145,7 +145,7 @@ public class UsageExampleTest {
         TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("wallets").get("13");
+        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("13");
 
         // print test case details
         log.info("TestCase: {}", testCase);
@@ -195,5 +195,40 @@ public class UsageExampleTest {
         assertThat(actualDataAsHex).isEqualTo(expectedDataAsHex);
         assertThat(actualExtMsgAsHex).isEqualTo(expectedExtMsgAsHex);
         assertThat(actualExtMsgAsBoc).isEqualTo(expectedBocAsHex);
+    }
+
+    @Test
+    public void testCryptographySignature() throws IOException {
+
+        // read the JSON file with tests cases
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+
+        // select particular test case by category name and test id
+        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("cryptography").get("5");
+
+        // print test case details
+        log.info("TestCase: {}", testCase);
+
+        // fetch input parameters
+        String prvKey = (String) testCase.getInput().get("prvKey");
+
+        byte[] secretKey = Utils.hexToSignedBytes(prvKey);
+        TweetNaclFast.Signature.KeyPair keyPair = Utils.generateSignatureKeyPairFromSeed(secretKey);
+
+        byte[] pubKey = keyPair.getPublicKey();
+        byte[] secKey = keyPair.getSecretKey();
+
+        String actualPubKeyAsHex = Utils.bytesToHex(pubKey);
+
+        byte[] signedMsg = Utils.signData(pubKey, secKey, "ABC".getBytes());
+        String actualSignedOutput = Utils.bytesToHex(signedMsg);
+
+        // fetch expected results
+        String expectedPubKey = (String) testCase.getExpectedOutput().get("pubKey");
+        String expectedSignedOutput = (String) testCase.getExpectedOutput().get("signedOutput");
+
+        assertThat(actualPubKeyAsHex).isEqualTo(expectedPubKey);
+        assertThat(actualSignedOutput).isEqualTo(expectedSignedOutput);
     }
 }
