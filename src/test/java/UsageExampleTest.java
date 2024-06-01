@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(JUnit4.class)
 public class UsageExampleTest {
 
-    public static final String TON_TEST_CASES_FILE_NAME = "TonApiTestCases.json";
+    public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
 
     Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
@@ -31,10 +31,10 @@ public class UsageExampleTest {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-        TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("9");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("9");
 
         // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
         String testId = testCase.getId();
@@ -86,10 +86,10 @@ public class UsageExampleTest {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-        TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("10");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("10");
 
         // print test case details
         log.info("TestCase: {}", testCase);
@@ -142,10 +142,10 @@ public class UsageExampleTest {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-        TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("smartcontracts").get("13");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("13");
 
         // print test case details
         log.info("TestCase: {}", testCase);
@@ -202,10 +202,10 @@ public class UsageExampleTest {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-        TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
         // select particular test case by category name and test id
-        TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("cryptography").get("5");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("cryptography").get("5");
 
         // print test case details
         log.info("TestCase: {}", testCase);

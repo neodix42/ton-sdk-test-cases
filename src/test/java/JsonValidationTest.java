@@ -15,11 +15,11 @@ import java.io.InputStream;
 public class JsonValidationTest {
 
     public static final String SCHEMA_FILE_NAME = "scheme.json";
-    public static final String TON_TEST_CASES_FILE_NAME = "TonApiTestCases.json";
+    public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
 
     @Test
     public void testJsonValidation() {
-        System.out.println("Validating JSON data file TonApiTestCases.json against scheme.json");
+        System.out.println("Validating JSON data file TonSdkTestCases.json against scheme.json");
 
         validateJsonDataFileAgainstScheme();
     }

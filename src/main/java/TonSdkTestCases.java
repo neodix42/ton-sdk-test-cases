@@ -12,7 +12,7 @@ import java.util.Map;
 @Getter
 @Setter
 @ToString
-public class TonApiTestCases implements Serializable {
+public class TonSdkTestCases implements Serializable {
     private Map<String, Map<String, TestCase>> testCases;
 
     @Setter

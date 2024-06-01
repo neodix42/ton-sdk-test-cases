@@ -1,4 +1,4 @@
-# TON API test cases
+# TON SDK test cases
 
 Generic set of use cases for testing implementation of various TON libraries and interfaces.
 
@@ -29,17 +29,17 @@ Each `input` and `expectedOutput` can have arbitrary input parameters, for examp
 ```
 
 Look at validation [scheme.json](
-https://raw.githubusercontent.com/neodix42/ton-api-test-cases/main/scheme.json) for more details.
+https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/scheme.json) for more details.
 
 ## How to use?
 
 ### Example provided for ton4j library
 
-Download JSON data file with test cases and put it to your folder [TonApiTestCases.json](
-https://raw.githubusercontent.com/neodix42/ton-api-test-cases/main/TonApiTestCases.json)
+Download JSON data file with test cases and put it to your folder [TonSdkTestCases.json](
+https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/TonSdkTestCases.json)
 
 ```java
-public static final String TON_TEST_CASES_FILE_NAME = "TonApiTestCases.json";
+public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
 
 Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
@@ -48,10 +48,10 @@ public void testWalletV3R2Creation() throws IOException {
 
     // read the JSON file with tests cases
     String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-    TonApiTestCases tonApiTestCases = gson.fromJson(fileContentWithUseCases, TonApiTestCases.class);
+    TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
     // select particular test case by category name and test id
-    TonApiTestCases.TestCase testCase = tonApiTestCases.getTestCases().get("wallets").get("9");
+    TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("wallets").get("9");
 
     // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
     String testId = testCase.getId();
