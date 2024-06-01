@@ -60,7 +60,7 @@ public void testWalletV3R2Creation() throws IOException {
     log.info("testId: {}", testId);
     log.info("description: {}", description);
 
-    // fetch input parameters and print test case details
+    // fetch and print input parameters
     String prvKey = (String) testCase.getInput().get("prvKey");
     Long workchain = (Long) testCase.getInput().get("wc");
     Long walletId = (Long) testCase.getInput().get("walletId");
