@@ -22,7 +22,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RunWith(JUnit4.class)
 public class UsageExampleTest {
 
-    public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
+    public static final String TON_TEST_CASES_SMARTCONTRACTS = "smartcontracts.json";
+    public static final String TON_TEST_CASES_CRYPTOGRAPHY = "cryptography.json";
 
     Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
@@ -30,22 +31,22 @@ public class UsageExampleTest {
     public void testWalletV3R2Creation() throws IOException {
 
         // read the JSON file with tests cases
-        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_SMARTCONTRACTS)));
         TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
+        String testId = "smartcontracts-9";
         // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("9");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
 
         // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
-        String testId = testCase.getId();
         String description = testCase.getDescription();
 
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
         // fetch input parameters and print test case details
-        String prvKey = (String) testCase.getInput().get("prvKey");
-        Long workchain = (Long) testCase.getInput().get("wc");
+        String prvKey = (String) testCase.getInput().get("privateKey");
+        Long workchain = (Long) testCase.getInput().get("workchain");
         Long walletId = (Long) testCase.getInput().get("walletId");
 
         log.info("input parameters:");
@@ -85,18 +86,20 @@ public class UsageExampleTest {
     public void testWalletV3R2Transfer() throws IOException {
 
         // read the JSON file with tests cases
-        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_SMARTCONTRACTS)));
         TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
+        String testId = "smartcontracts-10";
+
         // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("10");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
 
         // print test case details
         log.info("TestCase: {}", testCase);
 
         // fetch input parameters
-        String prvKey = (String) testCase.getInput().get("prvKey");
-        Long workchain = (Long) testCase.getInput().get("wc");
+        String prvKey = (String) testCase.getInput().get("privateKey");
+        Long workchain = (Long) testCase.getInput().get("workchain");
         Long walletId = (Long) testCase.getInput().get("walletId");
         String destinationAddress = (String) testCase.getInput().get("destinationAddress");
         Long seqNo = (Long) testCase.getInput().get("seqNo");
@@ -131,7 +134,7 @@ public class UsageExampleTest {
         String actualExtMsgForSerializationAsBoc = Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
 
         // fetch the expected result and compare it against the actual one
-        String expectedBocAsHex = (String) testCase.getExpectedOutput().get("extMsgBocAsHex");
+        String expectedBocAsHex = (String) testCase.getExpectedOutput().get("externalMessageBocAsHex");
 
         assertThat(actualExtMsgForSerializationAsBoc).isEqualTo(expectedBocAsHex);
     }
@@ -141,18 +144,20 @@ public class UsageExampleTest {
     public void testWalletV3R2CreationMaster() throws IOException {
 
         // read the JSON file with tests cases
-        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_SMARTCONTRACTS)));
         TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
+        String testId = "smartcontracts-13";
+
         // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("smartcontracts").get("13");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
 
         // print test case details
         log.info("TestCase: {}", testCase);
 
         // fetch input parameters
-        String prvKey = (String) testCase.getInput().get("prvKey");
-        Long workchain = (Long) testCase.getInput().get("wc");
+        String prvKey = (String) testCase.getInput().get("privateKey");
+        Long workchain = (Long) testCase.getInput().get("workchain");
         Long walletId = (Long) testCase.getInput().get("walletId");
 
 
@@ -180,7 +185,7 @@ public class UsageExampleTest {
         String expectedRawAddress = (String) testCase.getExpectedOutput().get("rawAddress");
         String expectedCodeAsHex = (String) testCase.getExpectedOutput().get("codeAsHex");
         String expectedDataAsHex = (String) testCase.getExpectedOutput().get("dataAsHex");
-        String expectedExtMsgAsHex = (String) testCase.getExpectedOutput().get("extMsgAsHex");
+        String expectedExtMsgAsHex = (String) testCase.getExpectedOutput().get("externalMessageAsHex");
         String expectedBocAsHex = (String) testCase.getExpectedOutput().get("bocAsHex");
 
         log.info("expected results:");
@@ -201,17 +206,18 @@ public class UsageExampleTest {
     public void testCryptographySignature() throws IOException {
 
         // read the JSON file with tests cases
-        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_CRYPTOGRAPHY)));
         TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
+        String testId = "cryptography-5";
         // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("cryptography").get("5");
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
 
         // print test case details
         log.info("TestCase: {}", testCase);
 
         // fetch input parameters
-        String prvKey = (String) testCase.getInput().get("prvKey");
+        String prvKey = (String) testCase.getInput().get("privateKey");
 
         byte[] secretKey = Utils.hexToSignedBytes(prvKey);
         TweetNaclFast.Signature.KeyPair keyPair = Utils.generateSignatureKeyPairFromSeed(secretKey);
@@ -225,7 +231,7 @@ public class UsageExampleTest {
         String actualSignedOutput = Utils.bytesToHex(signedMsg);
 
         // fetch expected results
-        String expectedPubKey = (String) testCase.getExpectedOutput().get("pubKey");
+        String expectedPubKey = (String) testCase.getExpectedOutput().get("publicKey");
         String expectedSignedOutput = (String) testCase.getExpectedOutput().get("signedOutput");
 
         assertThat(actualPubKeyAsHex).isEqualTo(expectedPubKey);

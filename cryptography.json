@@ -1,0 +1,62 @@
+{
+  "testCases": {
+    "cryptography-1": {
+      "description": "CRC32 algorithm using the polynomial 0x1EDC6F41. Basic string test.",
+      "input": {
+        "inputString": "ABC"
+      },
+      "expectedOutput": {
+        "resultAsHex": "8839a97f"
+      }
+    },
+    "cryptography-2": {
+      "description": "CRC-16/XMODEM algorithm. Basic string test.",
+      "input": {
+        "inputString": "ABC"
+      },
+      "expectedOutput": {
+        "resultAsHex": "3994"
+      }
+    },
+    "cryptography-3": {
+      "description": "CRC32 algorithm using the polynomial 0x1EDC6F41. Checking crc32 of BoC where result stored in reversed order.",
+      "input": {
+        "inputString": "b5ee9c724101010100620000c0ff0020dd2082014c97ba9730ed44d0d70b1fe0a4f2608308d71820d31fd31fd31ff82313bbf263ed44d0d31fd31fd3ffd15132baf2a15144baf2a204f901541055f910f2a3f8009320d74a96d307d402fb00e8d101a4c8cb1fcb1fcbffc9ed54"
+      },
+      "expectedOutput": {
+        "resultAsHex": "3fbe6ee0"
+      }
+    },
+    "cryptography-4": {
+      "description": "SHA256. Basic string test.",
+      "input": {
+        "inputString": "FollowTheWhiteRabbit_a9730ed44d0d70b1fe0a4f2608308d71820d31fd31fd31ff82313bbf263ed44d0d31f"
+      },
+      "expectedOutput": {
+        "result": "a2df21c64ea8695e09059539809ffef63349db23e4697521d3037947d17b2d55"
+      }
+    },
+    "cryptography-5": {
+      "description": "Signing with Ed25519 basic string test.",
+      "input": {
+        "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
+        "input": "ABC"
+      },
+      "expectedOutput": {
+        "publicKey": "82a0b2543d06fec0aac952e9ec738be56ab1b6027fc0c1aa817ae14b4d1ed2fb",
+        "signedOutput": "a7f715a9b47de4b40890969df2ef2aee5082520edbc0ed11e695332b5663e1b4bd0c292d6e25d8da9453c0ea09a92978bb6edb5152c2684ca31364fd4808750a"
+      }
+    },
+    "cryptography-6": {
+      "description": "Signing with Ed25519 basic string test.",
+      "input": {
+        "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
+        "input": "ABC"
+      },
+      "expectedOutput": {
+        "publicKey": "82a0b2543d06fec0aac952e9ec738be56ab1b6027fc0c1aa817ae14b4d1ed2fb",
+        "signedInput": "a7f715a9b47de4b40890969df2ef2aee5082520edbc0ed11e695332b5663e1b4bd0c292d6e25d8da9453c0ea09a92978bb6edb5152c2684ca31364fd4808750a"
+      }
+    }
+  }
+}

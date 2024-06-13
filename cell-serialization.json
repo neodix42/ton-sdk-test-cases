@@ -1,0 +1,14 @@
+{
+  "testCases": {
+    "cell-serialization-1": {
+      "description": "Basic cell serialization.",
+      "input": {
+        "inputNumber": 42,
+        "bitLength": 7
+      },
+      "expectedOutput": {
+        "resultBocAsHexWithCrc": "b5ee9c72410101010003000001558501ef11"
+      }
+    }
+  }
+}

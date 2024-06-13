@@ -1,0 +1,16 @@
+{
+  "testCases": {
+    "address-1": {
+      "description": "Check conversion of raw address.",
+      "input": {
+        "inputRawAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d"
+      },
+      "expectedOutput": {
+        "bounceableUrlSafe": "Ef_N_wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq00-y",
+        "nonBounceableUrlSafe": "Uf_N_wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq0xJ3",
+        "bounceable": "Ef/N/wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq00+y",
+        "nonBounceable": "Uf/N/wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq0xJ3"
+      }
+    }
+  }
+}

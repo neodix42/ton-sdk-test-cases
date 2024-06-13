@@ -13,15 +13,13 @@ import java.util.Map;
 @Setter
 @ToString
 public class TonSdkTestCases implements Serializable {
-    private Map<String, Map<String, TestCase>> testCases;
+    private Map<String, TestCase> testCases;
 
     @Setter
     @Getter
     public static class TestCase {
 
-        private String id;
         private String description;
-        private String referenceScript;
         private Map<String, Object> input;
         private Map<String, Object> expectedOutput;
 

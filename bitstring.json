@@ -1,0 +1,15 @@
+{
+  "testCases": {
+    "bitstring-1": {
+      "description": "Check bitstring construction, binary and fift-hex representation",
+      "input": {
+        "inputNumber": 7,
+        "bitLength": 3
+      },
+      "expectedOutput": {
+        "resultAsBinaryString": "111",
+        "resultAsFiftHex": "F_"
+      }
+    }
+  }
+}
