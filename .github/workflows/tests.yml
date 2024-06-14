@@ -16,4 +16,8 @@ jobs:
 
       - name: Run schema validation against JSON file with test cases and execute example tests
         run: |
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F6A649124520E5F3
+          sudo add-apt-repository ppa:ton-foundation/ppa
+          sudo apt update
+          sudo apt install ton
           mvn test
