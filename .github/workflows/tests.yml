@@ -4,7 +4,7 @@ on: [ push,workflow_dispatch,workflow_call,pull_request ]
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: ubuntu-22
 
     steps:
       - uses: actions/checkout@v3
@@ -16,5 +16,8 @@ jobs:
 
       - name: Run schema validation against JSON file with test cases and execute example tests
         run: |
-          choco install ton
+          sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F6A649124520E5F3
+          sudo add-apt-repository ppa:ton-foundation/ppa
+          sudo apt update
+          sudo apt install ton
           mvn test
