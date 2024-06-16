@@ -19,7 +19,7 @@ public class TestFiftRunner {
     @Test
     public void testFiftRunner() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/test.fift");
+        URL resource = TestFiftRunner.class.getResource("/fift/test.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
