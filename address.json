@@ -1,15 +1,109 @@
 {
   "testCases": {
     "address-1": {
-      "description": "Check conversion of raw address.",
+      "description": "Test conversion of raw address in a base chain.",
       "input": {
-        "inputRawAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d"
+        "inputRawAddress": "0:e4648be2e9f920355c4b3a0c39873aae1a1c6152f86f27807cdfaa7e350fa22c"
       },
       "expectedOutput": {
-        "bounceableUrlSafe": "Ef_N_wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq00-y",
-        "nonBounceableUrlSafe": "Uf_N_wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq0xJ3",
-        "bounceable": "Ef/N/wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq00+y",
-        "nonBounceable": "Uf/N/wfrFUwuWVkwpqmkRRYIJRzByJRobEwRCJTeQ8lq0xJ3"
+        "bounceableUrlSafe": "EQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p-NQ-iLKCv",
+        "nonBounceableUrlSafe": "UQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p-NQ-iLP1q",
+        "bounceable": "EQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p+NQ+iLKCv",
+        "nonBounceable": "UQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p+NQ+iLP1q",
+        "bounceableUrlSafeTest": "kQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p-NQ-iLBsl",
+        "nonBounceableUrlSafeTest": "0QDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p-NQ-iLEbg",
+        "bounceableTest": "kQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p+NQ+iLBsl",
+        "nonBounceableTest": "0QDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ4B836p+NQ+iLEbg"
+      }
+    },
+    "address-2": {
+      "description": "Test conversion of raw address in a master chain.",
+      "input": {
+        "inputRawAddress": "-1:befed5b5cc2cb97a14e283426b04402213aedb6e74a6a95b64b94f0516a94d51"
+      },
+      "expectedOutput": {
+        "bounceableUrlSafe": "Ef--_tW1zCy5ehTig0JrBEAiE67bbnSmqVtkuU8FFqlNUT9n",
+        "nonBounceableUrlSafe": "Uf--_tW1zCy5ehTig0JrBEAiE67bbnSmqVtkuU8FFqlNUWKi",
+        "bounceable": "Ef++/tW1zCy5ehTig0JrBEAiE67bbnSmqVtkuU8FFqlNUT9n",
+        "nonBounceable": "Uf++/tW1zCy5ehTig0JrBEAiE67bbnSmqVtkuU8FFqlNUWKi"
+      }
+    },
+    "address-3": {
+      "description": "Test conversion of raw address with a wrong workchain.",
+      "input": {
+        "inputRawAddress": "-2:befed5b5cc2cb97a14e283426b04402213aedb6e74a6a95b64b94f0516a94d51"
+      },
+      "expectedOutput": {
+        "error": "raised exception"
+      }
+    },
+    "address-4": {
+      "description": "Test conversion of raw address with a wrong workchain.",
+      "input": {
+        "inputRawAddress": "1:befed5b5cc2cb97a14e283426b04402213aedb6e74a6a95b64b94f0516a94d51"
+      },
+      "expectedOutput": {
+        "error": "raised exception"
+      }
+    },
+    "address-5": {
+      "description": "Test conversion of raw address with a wrong workchain.",
+      "input": {
+        "inputRawAddress": "2:befed5b5cc2cb97a14e283426b04402213aedb6e74a6a95b64b94f0516a94d51"
+      },
+      "expectedOutput": {
+        "error": "raised exception"
+      }
+    },
+    "address-6": {
+      "description": "Test conversion of master raw address",
+      "input": {
+        "inputRawAddress": "-1:0000000000000000000000000000000000000000000000000000000000000000"
+      },
+      "expectedOutput": {
+        "bounceableUrlSafe": "Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU",
+        "nonBounceableUrlSafe": "Uf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3R",
+        "bounceable": "Ef8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADAU",
+        "nonBounceable": "Uf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAG3R"
+      }
+    },
+    "address-7": {
+      "description": "Test conversion of elector raw address",
+      "input": {
+        "inputRawAddress": "-1:3333333333333333333333333333333333333333333333333333333333333333"
+      },
+      "expectedOutput": {
+        "bounceableUrlSafe": "Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF",
+        "nonBounceableUrlSafe": "Uf8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMxYA",
+        "bounceable": "Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF",
+        "nonBounceable": "Uf8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMxYA"
+      }
+    },
+    "address-8": {
+      "description": "Test conversion of url-safe base64 encoded address",
+      "input": {
+        "bounceableUrlSafe": "Uf-CRYz9HRGdb19t7DOZUfUjwUZmngz-zJvpD8vpmF3xqeXg"
+      },
+      "expectedOutput": {
+        "rawAddress": "-1:82458cfd1d119d6f5f6dec339951f523c146669e0cfecc9be90fcbe9985df1a9"
+      }
+    },
+    "address-9": {
+      "description": "Test conversion of non-url-safe base64 encoded non-bounceable address",
+      "input": {
+        "bounceableUrlSafe": "UQCnuv+ZuR0QsIh5vwxUBuzzocSowbCa7ctdwl6QizBKzDiJ"
+      },
+      "expectedOutput": {
+        "rawAddress": "0:a7baff99b91d10b08879bf0c5406ecf3a1c4a8c1b09aedcb5dc25e908b304acc"
+      }
+    },
+    "address-10": {
+      "description": "Test conversion of url-safe base64 encoded address with a wrong checksum.",
+      "input": {
+        "bounceableUrlSafe": "EQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ2B836p-NQ-iLKCv"
+      },
+      "expectedOutput": {
+        "error": "raise exception - wrong crc16 checksum"
       }
     }
   }
