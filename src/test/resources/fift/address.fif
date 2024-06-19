@@ -6,10 +6,10 @@ $1 $>smca 0= abort"bad address"
 rot . swap x. . cr
 
 $1 $>smca
-dup constant result drop
-dup constant flags drop
-dup constant wallet_addr drop
-dup constant wc drop
+constant result
+constant flags
+constant wallet_addr
+constant wc
 
 ."result: " result . cr
 ."flags: " flags . cr
