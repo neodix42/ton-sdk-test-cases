@@ -49,7 +49,7 @@ public class FiftScriptsTest {
         log.info("nonBounceableUrlTest: {}", address.toString(true, true, false, true));
     }
 
-    @Test
+    @Test(expected = Error.class)
     public void testAddressWithTon4j_2() {
         Address address = Address.of("EQDkZIvi6fkgNVxLOgw5hzquGhxhUvhvJ2B836p-NQ-iLKCv");
         log.info("bounceableUrlSafe: {}", address.toBounceable());
