@@ -105,6 +105,24 @@
       "expectedOutput": {
         "error": "raise exception - wrong crc16 checksum"
       }
+    },
+    "address-11": {
+      "description": "Test conversion of raw address with too short hash size",
+      "input": {
+        "bounceableUrlSafe": "0:a7baff99b91d10b08879bf0c5406ecf3a1c4a8c1b09aedcb5dc25e908b304a"
+      },
+      "expectedOutput": {
+        "error": "raise exception - too short hex part"
+      }
+    },
+    "address-12": {
+      "description": "Test conversion of raw address with too long hash size",
+      "input": {
+        "bounceableUrlSafe": "0:a7baff99b91d10b08879bf0c5406ecf3a1c4a8c1b09aedcb5dc25e908b304acca"
+      },
+      "expectedOutput": {
+        "error": "raise exception - too long hex part"
+      }
     }
   }
 }

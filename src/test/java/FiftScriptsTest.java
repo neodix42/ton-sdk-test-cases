@@ -37,7 +37,7 @@ public class FiftScriptsTest {
 
     @Test
     public void testAddressWithTon4j() {
-        Address address = Address.of("0:e4648be2e9f920355c4b3a0c39873aae1a1c6152f86f27807cdfaa7e350fa22c");
+        Address address = Address.of("0:a7baff99b91d10b08879bf0c5406ecf3a1c4a8c1b09aedcb5dc25e908b304acc");
         log.info("bounceableUrlSafe: {}", address.toBounceable());
         log.info("nonBounceableUrlSafe: {}", address.toNonBounceable());
         log.info("bounceable: {}", address.toString(true, false, true));
