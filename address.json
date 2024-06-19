@@ -91,7 +91,7 @@
     "address-9": {
       "description": "Test conversion of non-url-safe base64 encoded non-bounceable address",
       "input": {
-        "bounceableUrlSafe": "UQCnuv+ZuR0QsIh5vwxUBuzzocSowbCa7ctdwl6QizBKzDiJ"
+        "nonBounceable": "UQCnuv+ZuR0QsIh5vwxUBuzzocSowbCa7ctdwl6QizBKzDiJ"
       },
       "expectedOutput": {
         "rawAddress": "0:a7baff99b91d10b08879bf0c5406ecf3a1c4a8c1b09aedcb5dc25e908b304acc"
