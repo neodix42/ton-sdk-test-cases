@@ -13,6 +13,8 @@ import org.ton.java.tlb.types.Message;
 import org.ton.java.utils.Utils;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -24,6 +26,7 @@ public class UsageExampleTest {
 
     public static final String TON_TEST_CASES_SMARTCONTRACTS = "smartcontracts.json";
     public static final String TON_TEST_CASES_CRYPTOGRAPHY = "cryptography.json";
+    public static final String TON_TEST_CASES_NUMBERS = "numbers.json";
 
     Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
@@ -236,5 +239,36 @@ public class UsageExampleTest {
 
         assertThat(actualPubKeyAsHex).isEqualTo(expectedPubKey);
         assertThat(actualSignedOutput).isEqualTo(expectedSignedOutput);
+    }
+
+
+    @Test
+    public void testNumbers() throws IOException {
+
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_NUMBERS)));
+        Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.BIG_DECIMAL).create();
+
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
+
+        String testId = "numbers-2";
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
+
+        log.info("TestCase: {}", testCase);
+
+        BigInteger toncoinsA = Utils.toNano(testCase.getInput().get("toncoinsA").toString());
+        BigInteger toncoinsB = Utils.toNano(testCase.getInput().get("toncoinsB").toString());
+        BigInteger toncoinsC = Utils.toNano(testCase.getInput().get("toncoinsC").toString());
+
+        BigInteger sum = toncoinsA.add(toncoinsB).add(toncoinsC);
+        log.info("sum {}", sum);
+        String sumRounded = Utils.formatNanoValue(sum, 2);
+        BigDecimal sumRoundedBigDec = new BigDecimal(Utils.formatNanoValue(sumRounded, 2));
+
+
+        String expectedRounded = (String) testCase.getExpectedOutput().get("sumDecimals2");
+        BigDecimal expectedSumRoundedBigDec = new BigDecimal(Utils.formatNanoValue(expectedRounded, 2));
+
+        assertThat(sumRounded).isEqualTo(expectedRounded);
+        assertThat(sumRoundedBigDec).isEqualTo(expectedSumRoundedBigDec);
     }
 }

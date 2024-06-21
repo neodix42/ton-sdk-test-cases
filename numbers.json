@@ -1,0 +1,65 @@
+{
+  "testCases": {
+    "numbers-1": {
+      "description": "Check big number comparison",
+      "input": {
+        "inputNumberA": "2",
+        "powerOfNumberA": "336",
+        "inputNumberB": "2",
+        "powerOfNumberB": "316"
+      },
+      "expectedOutput": {
+        "AequalsB": false
+      }
+    },
+    "numbers-2": {
+      "description": "Check toncoin rounding",
+      "input": {
+        "toncoinsA": "0.2022511",
+        "toncoinsB": "0.1522514128",
+        "toncoinsC": "7.846944"
+      },
+      "expectedOutput": {
+        "sumDecimals2": "8.21"
+      }
+    },
+    "numbers-3": {
+      "description": "Check toncoin conversion toNano()",
+      "input": {
+        "toncoinsValueA": "55452.84035143599999",
+        "toncoinsValueB": "0.11333333333333333333"
+      },
+      "expectedOutput": {
+        "nanoValueA": "55452840351435",
+        "nanoValueB": "11333333"
+      }
+    },
+    "numbers-4": {
+      "description": "Check toncoin parsing fromNano()",
+      "input": {
+        "toncoinsValue": "542545452543214354"
+      },
+      "expectedOutput": {
+        "toncoins": "542545452.543214354"
+      }
+    },
+    "numbers-5": {
+      "description": "Check toncoin conversion toNano() too big values",
+      "input": {
+        "toncoinsValue": "87131189765554911355541123898551252.156449"
+      },
+      "expectedOutput": {
+        "error": "raise error"
+      }
+    },
+    "numbers-6": {
+      "description": "Check toncoin conversion fromNano() too big value",
+      "input": {
+        "nanoValue": "87897655549113552455125241594812234476"
+      },
+      "expectedOutput": {
+        "error": "raise error"
+      }
+    }
+  }
+}

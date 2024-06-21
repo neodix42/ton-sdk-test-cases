@@ -22,7 +22,8 @@ public class JsonValidationTest {
             "bitstring.json",
             "cryptography.json",
             "cell-deserialization.json",
-            "cell-serialization.json"
+            "cell-serialization.json",
+            "numbers.json"
     };
 
     @Test
