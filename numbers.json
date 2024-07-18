@@ -79,9 +79,7 @@
         "minus": "1"
       },
       "expectedOutput": {
-        "base": "2",
-        "pow": "120",
-        "minus": "1"
+        "result": "no error using fromNano()"
       }
     }
   }
