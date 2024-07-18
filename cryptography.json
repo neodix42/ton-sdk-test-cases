@@ -71,10 +71,10 @@
       },
       "expectedOutput": {
         "publicKey": "82a0b2543d06fec0aac952e9ec738be56ab1b6027fc0c1aa817ae14b4d1ed2fb",
-        "resultBase641": "2jmj7l5rSw0yVb/vlWAYkK/YBwk=",
-        "resultBase642": "NWoZK3kTsExUV00Ywo1G5jlUKKs=",
-        "resultBase643": "uRysQwoax0pNJeBC3+zpQzJy1rA=",
-        "resultBase644": "NKqXPNTE2qT2Husr260nMWU0AW8="
+        "resultBase641": "I12blBKoEKkfwpqi/Uvyu5uWdElSREN0UOGumwipYRoyM52H4xN25xtuOzKjJRKiRHlcg5+lR934OPNNuLl4Ag==",
+        "resultBase642": "LMrjB2vJeHc3v/5Ta+vEPJ6ECFEbtHegunIOYf70F5EPiCJFkwFFxeVrF5XScd8mxoyaIYwvpaCqpKkPe7mFDw==",
+        "resultBase643": "7VqmHTjlhMClo0gYcT7CSNaHK9U3naUBbM01NqLpct6ysH/kVScyjv3BYfr34KeRCeSYlITKEw/0wv1q7PMNBg==",
+        "resultBase644": "ipkHXGJebIzeJBFYkhBaCzoKBl4yEnnwUMAxXMd9T1ik6uTLBT766+rzjlVGidEkOVV0MHsTAtIg+gpwu2JVAg=="
       }
     },
     "cryptography-6": {
