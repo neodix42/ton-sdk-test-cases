@@ -203,7 +203,7 @@ public class UsageExampleTest {
     }
 
     @Test
-    public void testCryptographySignature() throws IOException {
+    public void testCryptography5() throws IOException {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_CRYPTOGRAPHY)));
@@ -217,7 +217,12 @@ public class UsageExampleTest {
         log.info("TestCase: {}", testCase);
 
         // fetch input parameters
-        String prvKey = (String) testCase.getInput().get("privateKey");
+        String prvKey = testCase.getInput().get("privateKey").toString();
+
+        String inputString1 = testCase.getInput().get("inputString1").toString();
+        String inputString2 = testCase.getInput().get("inputString2").toString();
+        String inputString3 = testCase.getInput().get("inputString3").toString();
+
 
         byte[] secretKey = Utils.hexToSignedBytes(prvKey);
         TweetNaclFast.Signature.KeyPair keyPair = Utils.generateSignatureKeyPairFromSeed(secretKey);
@@ -227,14 +232,19 @@ public class UsageExampleTest {
 
         String actualPubKeyAsHex = Utils.bytesToHex(pubKey);
 
-        byte[] signedMsg = Utils.signData(pubKey, secKey, "ABC".getBytes());
-        String actualSignedOutput = Utils.bytesToHex(signedMsg);
+        byte[] actualSigned1 = Utils.signData(pubKey, secKey, inputString1.getBytes());
+        byte[] actualSigned2 = Utils.signData(pubKey, secKey, inputString2.getBytes());
+        byte[] actualSigned3 = Utils.signData(pubKey, secKey, inputString3.getBytes());
 
         // fetch expected results
         String expectedPubKey = (String) testCase.getExpectedOutput().get("publicKey");
-        String expectedSignedOutput = (String) testCase.getExpectedOutput().get("signedOutput");
+        String expectedBase641 = testCase.getExpectedOutput().get("resultBase641").toString();
+        String expectedBase642 = testCase.getExpectedOutput().get("resultBase642").toString();
+        String expectedBase643 = testCase.getExpectedOutput().get("resultBase643").toString();
 
         assertThat(actualPubKeyAsHex).isEqualTo(expectedPubKey);
-        assertThat(actualSignedOutput).isEqualTo(expectedSignedOutput);
+        assertThat(Utils.bytesToBase64(actualSigned1)).isEqualTo(expectedBase641);
+        assertThat(Utils.bytesToBase64(actualSigned2)).isEqualTo(expectedBase642);
+        assertThat(Utils.bytesToBase64(actualSigned3)).isEqualTo(expectedBase643);
     }
 }
