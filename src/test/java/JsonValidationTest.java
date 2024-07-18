@@ -38,13 +38,12 @@ public class JsonValidationTest {
         JSONObject rawSchema = new JSONObject(new JSONTokener(schemaStream));
         org.everit.json.schema.Schema schema = SchemaLoader.load(rawSchema);
         for (String testCaseFile : TON_TEST_CASE_FILES) {
+            log.info("Validating JSON data file {}...", testCaseFile);
             InputStream dataStream = Files.newInputStream(Paths.get(testCaseFile));
             JSONObject jsonData = new JSONObject(new JSONTokener(dataStream));
 
             schema.validate(jsonData);
             log.info("JSON data file {} is valid.", testCaseFile);
-
         }
-
     }
 }

@@ -40,7 +40,7 @@
                   "anyOf": [
                     {
                       "type": "string",
-                      "minLength": 1
+                      "minLength": 0
                     },
                     {
                       "type": "integer"
@@ -75,7 +75,7 @@
                   "anyOf": [
                     {
                       "type": "string",
-                      "minLength": 1
+                      "minLength": 0
                     },
                     {
                       "type": "integer"
