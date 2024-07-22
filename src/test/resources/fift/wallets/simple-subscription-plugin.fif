@@ -1,0 +1,345 @@
+PROGRAM{
+  DECLPROC short_msg_fwd_fee
+  DECLPROC gas_to_coins
+  DECLPROC load_storage
+  DECLPROC save_storage
+  DECLPROC forward_funds
+  DECLPROC request_payment
+  DECLPROC self_destruct
+  DECLPROC recv_internal
+  DECLPROC recv_external
+  92260 DECLMETHOD get_subscription_data
+  short_msg_fwd_fee PROCINLINE:<{
+    //  workchain
+    25 ADDCONST	//  config_index
+    CONFIGOPTPARAM	//  _5
+    CTOS	//  _6
+    8 PUSHINT	//  _6 _7=8
+    SDSKIPFIRST	//  _8
+    64 PLDU	//  lump_price
+  }>
+  gas_to_coins PROCREF:<{
+    //  workchain gas
+    SWAP	//  gas workchain
+    21 ADDCONST	//  gas config_index
+    CONFIGOPTPARAM	//  gas _6
+    CTOS	//  gas cs
+    DUP	//  gas cs cs
+    8 PLDU	//  gas cs _9
+    209 PUSHINT	//  gas cs _9 _10=209
+    EQUAL	//  gas cs _11
+    IF:<{	//  gas cs
+      136 PUSHINT	//  gas cs _17
+      SDSKIPFIRST	//  gas cs
+    }>	//  gas cs
+    8 LDU	//  gas tag cs
+    OVER
+    221 PUSHINT	//  gas tag cs tag _24=221
+    EQUAL	//  gas tag cs _25
+    s0 s2 XCHG
+    222 PUSHINT	//  gas _25 cs tag _26=222
+    EQUAL	//  gas _25 cs _27
+    s1 s2 XCHG	//  gas cs _25 _27
+    OR	//  gas cs _28
+    71 THROWIFNOT
+    64 LDU	//  gas _40 _39
+    DROP	//  gas gas_price
+    MUL	//  _34
+    16 RSHIFT#	//  _36
+  }>
+  load_storage PROCREF:<{
+    //
+    c4 PUSH	//  _1
+    CTOS	//  ds
+    LDMSGADDR	//  _3 ds
+    LDMSGADDR	//  _3 _5 ds
+    LDGRAMS	//  _3 _5 _7 ds
+    32 LDU	//  _3 _5 _7 _9 ds
+    32 LDU	//  _3 _5 _7 _9 _12 ds
+    32 LDU	//  _3 _5 _7 _9 _12 _15 ds
+    32 LDU	//  _3 _5 _7 _9 _12 _15 _18 ds
+    32 LDU	//  _3 _5 _7 _9 _12 _15 _18 _21 ds
+    8 LDU	//  _3 _5 _7 _9 _12 _15 _18 _21 _24 ds
+    32 LDU	//  _3 _5 _7 _9 _12 _15 _18 _21 _24 _49 _48
+    DROP	//  _3 _5 _7 _9 _12 _15 _18 _21 _24 _27
+  }>
+  save_storage PROCREF:<{
+    //  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+    NEWC	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id _10
+    s0 s10 XCHG2	//  subscription_id beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _10 wallet
+    STSLICER	//  subscription_id beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _11
+    s0 s8 XCHG2	//  subscription_id failed_attempts amount period start_time timeout last_payment_time last_request_time _11 beneficiary
+    STSLICER	//  subscription_id failed_attempts amount period start_time timeout last_payment_time last_request_time _12
+    s0 s6 XCHG2	//  subscription_id failed_attempts last_request_time period start_time timeout last_payment_time _12 amount
+    STGRAMS	//  subscription_id failed_attempts last_request_time period start_time timeout last_payment_time _13
+    s1 s4 XCHG	//  subscription_id failed_attempts last_request_time last_payment_time start_time timeout period _13
+    32 STU	//  subscription_id failed_attempts last_request_time last_payment_time start_time timeout _15
+    s1 s2 XCHG	//  subscription_id failed_attempts last_request_time last_payment_time timeout start_time _15
+    32 STU	//  subscription_id failed_attempts last_request_time last_payment_time timeout _17
+    32 STU	//  subscription_id failed_attempts last_request_time last_payment_time _19
+    32 STU	//  subscription_id failed_attempts last_request_time _21
+    32 STU	//  subscription_id failed_attempts _23
+    8 STU	//  subscription_id _25
+    32 STU	//  _27
+    ENDC	//  _28
+    c4 POP
+  }>
+  forward_funds PROCREF:<{
+    //  beneficiary self_destruct? op
+    OVER	//  beneficiary self_destruct? op self_destruct?
+    NOT	//  beneficiary self_destruct? op _3
+    IF:<{	//  beneficiary self_destruct? op
+      67108864 PUSHINT	//  beneficiary self_destruct? op _4
+      2 PUSHINT	//  beneficiary self_destruct? op _4 _5=2
+      RAWRESERVE
+    }>	//  beneficiary self_destruct? op
+    0 PUSHINT	//  beneficiary self_destruct? op _8=0
+    BALANCE	//  beneficiary self_destruct? op _8=0 _9
+    SECOND	//  beneficiary self_destruct? op _8=0 _10
+    16 PUSHINT	//  beneficiary self_destruct? op _8=0 _10 _11=16
+    NEWC	//  beneficiary self_destruct? op _8=0 _10 _11=16 _12
+    6 STU	//  beneficiary self_destruct? op _8=0 _10 _14
+    s0 s5 XCHG2	//  _10 self_destruct? op _8=0 _14 beneficiary
+    STSLICER	//  _10 self_destruct? op _8=0 _15
+    OVER	//  _10 self_destruct? op _8=0 _15 _16=0
+    STGRAMS	//  _10 self_destruct? op _8=0 _17
+    s1 s4 XCHG	//  _8=0 self_destruct? op _10 _17
+    STDICT	//  _8=0 self_destruct? op _18
+    s1 s3 XCHG	//  op self_destruct? _8=0 _18
+    106 STU	//  op self_destruct? _30
+    s1 s2 XCHG	//  self_destruct? op _30
+    32 STU	//  self_destruct? msg
+    7 PUSHPOW2	//  self_destruct? msg mode=128
+    s0 s2 XCHG	//  mode=128 msg self_destruct?
+    IF:<{	//  mode=128 msg
+      160 PUSHINT
+      s2 POP	//  mode msg
+    }>	//  mode msg
+    ENDC	//  mode _37
+    SWAP	//  _37 mode
+    SENDRAWMSG
+  }>
+  request_payment PROCREF:<{
+    //  wallet requested_amount
+    OVER	//  wallet requested_amount wallet
+    REWRITESTDADDR	//  wallet requested_amount _45 _46
+    DROP	//  wallet requested_amount wc
+    DUP
+    15000 PUSHINT	//  wallet requested_amount wc wc _6=15000
+    gas_to_coins INLINECALLDICT	//  wallet requested_amount wc _7
+    SWAP	//  wallet requested_amount _7 wc
+    short_msg_fwd_fee INLINECALLDICT	//  wallet requested_amount _7 _8
+    ADD	//  wallet requested_amount amount
+    0 PUSHINT	//  wallet requested_amount amount _11=0
+    LTIME	//  wallet requested_amount amount _11=0 _12
+    0x706c7567 PUSHINT	//  wallet requested_amount amount _11=0 _12 _13
+    s2 PUSH	//  wallet requested_amount amount _11=0 _12 _13 _14=0
+    24 PUSHINT	//  wallet requested_amount amount _11=0 _12 _13 _14=0 _15=24
+    NEWC	//  wallet requested_amount amount _11=0 _12 _13 _14=0 _15=24 _16
+    6 STU	//  wallet requested_amount amount _11=0 _12 _13 _14=0 _18
+    s0 s7 XCHG2	//  _14=0 requested_amount amount _11=0 _12 _13 _18 wallet
+    STSLICER	//  _14=0 requested_amount amount _11=0 _12 _13 _19
+    s0 s4 XCHG2	//  _14=0 requested_amount _13 _11=0 _12 _19 amount
+    STGRAMS	//  _14=0 requested_amount _13 _11=0 _12 _20
+    s1 s5 XCHG	//  _12 requested_amount _13 _11=0 _14=0 _20
+    107 STU	//  _12 requested_amount _13 _11=0 _34
+    s1 s2 XCHG	//  _12 requested_amount _11=0 _13 _34
+    32 STU	//  _12 requested_amount _11=0 _36
+    s1 s3 XCHG	//  _11=0 requested_amount _12 _36
+    64 STU	//  _11=0 requested_amount _38
+    SWAP	//  _11=0 _38 requested_amount
+    STGRAMS	//  _11=0 _39
+    1 STU	//  msg
+    ENDC	//  _42
+    3 PUSHINT	//  _42 _43=3
+    SENDRAWMSG
+  }>
+  self_destruct PROC:<{
+    //  wallet beneficiary
+    OVER	//  wallet beneficiary wallet
+    REWRITESTDADDR	//  wallet beneficiary _42 _43
+    DROP	//  wallet beneficiary wc
+    10000 PUSHINT	//  wallet beneficiary wc _6=10000
+    gas_to_coins INLINECALLDICT	//  wallet beneficiary amount
+    LTIME	//  wallet beneficiary amount _9
+    0x64737472 PUSHINT	//  wallet beneficiary amount _9 _10
+    0 PUSHINT	//  wallet beneficiary amount _9 _10 _11=0
+    16 PUSHINT	//  wallet beneficiary amount _9 _10 _11=0 _12=16
+    NEWC	//  wallet beneficiary amount _9 _10 _11=0 _12=16 _13
+    6 STU	//  wallet beneficiary amount _9 _10 _11=0 _15
+    s0 s6 XCHG2	//  _11=0 beneficiary amount _9 _10 _15 wallet
+    STSLICER	//  _11=0 beneficiary amount _9 _10 _16
+    s0 s3 XCHG2	//  _11=0 beneficiary _10 _9 _16 amount
+    STGRAMS	//  _11=0 beneficiary _10 _9 _17
+    s1 s4 XCHG	//  _9 beneficiary _10 _11=0 _17
+    107 STU	//  _9 beneficiary _10 _31
+    32 STU	//  _9 beneficiary _33
+    s1 s2 XCHG	//  beneficiary _9 _33
+    64 STU	//  beneficiary msg
+    ENDC	//  beneficiary _36
+    3 PUSHINT	//  beneficiary _36 _37=3
+    SENDRAWMSG
+    TRUE	//  beneficiary _39
+    0x64737472 PUSHINT	//  beneficiary _39 _40
+    forward_funds INLINECALLDICT
+  }>
+  recv_internal PROC:<{
+    //  msg_value in_msg_cell in_msg
+    load_storage INLINECALLDICT	//  msg_value in_msg_cell in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+    s0 s11 XCHG	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts in_msg_cell
+    CTOS	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts cs
+    4 LDU	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _91 _90
+    NIP	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts cs
+    LDMSGADDR	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _93 _92
+    DROP	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+    s0 s8 PUSH2	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr s_addr beneficiary
+    SDEQ	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr _23
+    IFJMP:<{	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+      8 BLKDROP
+      s3 POP
+      s3 POP	//  wallet beneficiary in_msg
+      32 LDU	//  wallet beneficiary _95 _94
+      DROP	//  wallet beneficiary op
+      0x64737472 PUSHINT	//  wallet beneficiary op _28
+      EQUAL	//  wallet beneficiary _29
+      IFJMP:<{	//  wallet beneficiary
+        self_destruct CALLDICT
+      }>	//  wallet beneficiary
+      NIP	//  beneficiary
+      FALSE	//  beneficiary _31
+      0x756e6b77 PUSHINT	//  beneficiary _31 _32
+      forward_funds INLINECALLDICT
+    }>	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+    s0 s9 PUSH2	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr s_addr wallet
+    SDEQ	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr _34
+    NOT	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr _35
+    IFJMP:<{	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+      s8 s12 XCHG
+      12 BLKDROP	//  beneficiary
+      FALSE	//  beneficiary _36
+      0x756e6b77 PUSHINT	//  beneficiary _36 _37
+      forward_funds INLINECALLDICT
+    }>	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+    s10 PUSH	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr in_msg
+    SBITS	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr _39
+    32 LESSINT	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr _41
+    IFJMP:<{	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+      s8 s12 XCHG
+      12 BLKDROP	//  beneficiary
+      FALSE	//  beneficiary _42
+      0x756e6b77 PUSHINT	//  beneficiary _42 _43
+      forward_funds INLINECALLDICT
+    }>	//  msg_value subscription_id in_msg wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts s_addr
+    s0 s10 XCHG	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts in_msg
+    32 LDU	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _97 _96
+    DROP	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op
+    0x706c7567 PUSHINT	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op _49
+    31 PUSHPOW2	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op _49 _50=2147483648
+    OR	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op _51
+    s1 s(-1) PUXC	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op op _51
+    EQUAL	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op _52
+    IFJMP:<{	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op
+      DROP	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts
+      s2 s4 PUSH2	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_payment_time start_time
+      SUB	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _54
+      s6 PUSH	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _54 period
+      DIV	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot
+      NOW	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot _57
+      s6 PUSH	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot _57 start_time
+      SUB	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot _58
+      s7 PUSH	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot _58 period
+      DIV	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts last_timeslot cur_timeslot
+      GEQ	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _61
+      49 THROWIF
+      s0 s9 XCHG	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time s_addr
+      REWRITESTDADDR	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time _98 _99
+      DROP	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time from_wc
+      short_msg_fwd_fee INLINECALLDICT	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time _66
+      s6 s(-1) PUXC	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time amount _66
+      SUB	//  msg_value subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time last_request_time _67
+      s1 s11 XCHG	//  last_request_time subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time msg_value _67
+      GEQ	//  last_request_time subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time _68
+      IF:<{	//  last_request_time subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time
+        DROP
+        s6 POP	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time
+        NOW	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time last_payment_time
+        0 PUSHINT	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time last_payment_time failed_attempts=0
+        FALSE	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time last_payment_time failed_attempts=0 _71
+        0x73756273 PUSHINT	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time last_payment_time failed_attempts=0 _71 _72
+        s7 PUSH
+        -ROT	//  last_request_time subscription_id timeout wallet beneficiary amount period start_time last_payment_time failed_attempts=0 beneficiary _71 _72
+        forward_funds INLINECALLDICT
+        s7 s7 XCHG2	//  last_request_time subscription_id failed_attempts=0 wallet beneficiary amount period start_time timeout last_payment_time
+      }>	//  last_request_time subscription_id failed_attempts wallet beneficiary amount period start_time timeout last_payment_time
+      s6 s9 XCHG
+      s5 s8 XCHG
+      s4 s7 XCHG
+      s3 s6 XCHG
+      s5 s1 s3 XCHG3
+      s4 s2 XCHG2	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+      save_storage INLINECALLDICT
+    }>	//  msg_value subscription_id s_addr wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts op
+    s9 POP
+    7 BLKDROP
+    2 2 BLKDROP2
+    s2 POP	//  beneficiary op
+    0x64737472 PUSHINT	//  beneficiary op _75
+    EQUAL	//  beneficiary _76
+    IFJMP:<{	//  beneficiary
+      TRUE	//  beneficiary _77
+      0x64737472 PUSHINT	//  beneficiary _77 _78
+      forward_funds INLINECALLDICT
+    }>	//  beneficiary
+    DROP	//
+  }>
+  recv_external PROC:<{
+    //  in_msg
+    DROP	//
+    load_storage INLINECALLDICT	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+    s3 s5 PUSH2	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_payment_time start_time
+    SUB	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id _13
+    s7 PUSH	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id _13 period
+    DIV	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot
+    NOW	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot _16
+    s7 PUSH	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot _16 start_time
+    SUB	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot _17
+    s8 PUSH	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot _17 period
+    DIV	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id last_timeslot cur_timeslot
+    SWAP	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id cur_timeslot last_timeslot
+    GREATER	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id _20
+    s3 s5 XCPU	//  wallet beneficiary amount period start_time timeout last_payment_time _20 failed_attempts subscription_id last_request_time timeout
+    ADD	//  wallet beneficiary amount period start_time timeout last_payment_time _20 failed_attempts subscription_id _21
+    NOW	//  wallet beneficiary amount period start_time timeout last_payment_time _20 failed_attempts subscription_id _21 _22
+    LESS	//  wallet beneficiary amount period start_time timeout last_payment_time _20 failed_attempts subscription_id _23
+    s1 s3 XCHG	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts _20 _23
+    AND	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts _24
+    30 THROWIFNOT
+    ACCEPT
+    2 PUSHINT	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts _27
+    s1 s(-1) PUXC	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts failed_attempts _27
+    GEQ	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts _28
+    IF:<{	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts
+      s8 s7 PUSH2	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts wallet beneficiary
+      self_destruct CALLDICT
+    }>ELSE<{	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts
+      s8 s6 PUSH2	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts wallet amount
+      request_payment INLINECALLDICT
+      INC	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts
+    }>
+    NOW	//  wallet beneficiary amount period start_time timeout last_payment_time subscription_id failed_attempts _33
+    s0 s2 XCHG	//  wallet beneficiary amount period start_time timeout last_payment_time _33 failed_attempts subscription_id
+    save_storage INLINECALLDICT
+  }>
+  get_subscription_data PROC:<{
+    //
+    load_storage INLINECALLDICT	//  wallet beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+    s0 s9 XCHG	//  subscription_id beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts wallet
+    REWRITESTDADDR	//  subscription_id beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _25 _26
+    PAIR	//  subscription_id beneficiary amount period start_time timeout last_payment_time last_request_time failed_attempts _12
+    s0 s8 XCHG	//  subscription_id _12 amount period start_time timeout last_payment_time last_request_time failed_attempts beneficiary
+    REWRITESTDADDR	//  subscription_id _12 amount period start_time timeout last_payment_time last_request_time failed_attempts _27 _28
+    PAIR	//  subscription_id _12 amount period start_time timeout last_payment_time last_request_time failed_attempts _14
+    s0 s8 XCHG
+    s0 s9 XCHG	//  _12 _14 amount period start_time timeout last_payment_time last_request_time failed_attempts subscription_id
+  }>
+}END>c

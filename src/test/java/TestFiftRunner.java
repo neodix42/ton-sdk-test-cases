@@ -28,4 +28,30 @@ public class TestFiftRunner {
         String result = fiftRunner.run(fiftFile.getParent(), "-s", absolutePath);
         log.info("output: {}", result);
     }
+
+    @Test
+    public void testV3R2CodeCell() throws URISyntaxException {
+
+        URL resource = TestFiftRunner.class.getResource("/fift/wallets/wallet-v3-code.fif");
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String result = fiftRunner.run(fiftFile.getParent(), absolutePath);
+        log.info("output: {}", result);
+    }
+
+    @Test
+    public void testV4R2CodeCell() throws URISyntaxException {
+
+        URL resource = TestFiftRunner.class.getResource("/fift/wallets/print-v4-hex.fif");
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String result = fiftRunner.run(fiftFile.getParent(), absolutePath);
+        log.info("output: {}", result);
+    }
 }
