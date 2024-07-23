@@ -403,3 +403,4 @@ PROGRAM{
     DROP	//  list
   }>
 }END>c
+dup <s csr.

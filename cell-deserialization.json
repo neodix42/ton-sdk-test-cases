@@ -28,5 +28,14 @@
         "result": "shout deserialize without errors"
       }
     }
+  },
+  "cell-deserialization-3": {
+    "description": "Cell deserialization and serialization. fromBoc(input.bocAsHexWithCrc) -> toBoc(). Resulted bocAsHexWithCrc should match input bocAsHexWithCrc. Tested cell: <b b{01} s, 5 32 u, 6 31 u, true 1 i, b>",
+    "input": {
+      "bocAsHexWithCrc": "B5EE9C7241010101000B0000114000000140000003603C39FDA2"
+    },
+    "expectedOutput": {
+      "bocAsHexWithCrc": "B5EE9C7241010101000B0000114000000140000003603C39FDA2"
+    }
   }
 }

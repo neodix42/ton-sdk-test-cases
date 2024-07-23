@@ -54,4 +54,17 @@ public class TestFiftRunner {
         String result = fiftRunner.run(fiftFile.getParent(), absolutePath);
         log.info("output: {}", result);
     }
+
+    @Test
+    public void testCells() throws URISyntaxException {
+
+        URL resource = TestFiftRunner.class.getResource("/fift/cell.fif");
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String result = fiftRunner.run(fiftFile.getParent(), absolutePath);
+        log.info("output: {}", result);
+    }
 }
