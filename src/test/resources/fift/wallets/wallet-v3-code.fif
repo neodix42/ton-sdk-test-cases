@@ -23,5 +23,3 @@
    ENDS SWAP INC	//  public_key stored_subwallet seqno'
    NEWC 32 STU 32 STU 256 STU ENDC c4 POP
 }>c
-dup <s csr.
-2 boc+>B Bx. cr

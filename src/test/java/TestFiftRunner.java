@@ -43,6 +43,32 @@ public class TestFiftRunner {
     }
 
     @Test
+    public void testV3R2CreateWalletContract2() throws URISyntaxException {
+
+        URL resource = TestFiftRunner.class.getResource("/fift/wallets/new-wallet-v3.fif");
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String result = fiftRunner.run(fiftFile.getParent(), "-s", absolutePath, "0", "42");
+        log.info("output: {}", result);
+    }
+
+    @Test
+    public void testV3R2CreateWalletContract3() throws URISyntaxException {
+
+        URL resource = TestFiftRunner.class.getResource("/fift/wallets/new-wallet-v3.fif");
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String result = fiftRunner.run(fiftFile.getParent(), "-s", absolutePath, "-1", "42");
+        log.info("output: {}", result);
+    }
+
+    @Test
     public void testV4R2CodeCell() throws URISyntaxException {
 
         URL resource = TestFiftRunner.class.getResource("/fift/wallets/print-v4-hex.fif");
