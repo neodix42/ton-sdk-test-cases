@@ -14,8 +14,7 @@
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": 0,
-        "walletId": 42,
-        "initialSeqno": 0
+        "walletId": 42
       },
       "expectedOutput": {
         "rawAddress": "0:2d29bfa071c8c62fa3398b661a842e60f04cb8a915fb3e749ef7c6c41343e16c",
@@ -27,8 +26,7 @@
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": -1,
-        "walletId": 42,
-        "initialSeqno": 0
+        "walletId": 42
       },
       "expectedOutput": {
         "rawAddress": "-1:2d29bfa071c8c62fa3398b661a842e60f04cb8a915fb3e749ef7c6c41343e16c",
@@ -48,7 +46,7 @@
         "seqNo": 1,
         "amountTonCoins": 1,
         "bounceFlag": true,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3
       },
       "expectedOutput": {
@@ -63,9 +61,9 @@
         "destinationAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d",
         "walletId": 42,
         "seqNo": 1,
-        "amountTonCoins": 1,
+        "amountTonCoins": "1.15",
         "bounceFlag": false,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3
       },
       "expectedOutput": {
@@ -82,7 +80,7 @@
         "seqNo": 1,
         "amountTonCoins": 1,
         "bounceFlag": true,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3,
         "comment": "gift"
       },
@@ -104,8 +102,7 @@
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": 0,
-        "walletId": 42,
-        "initialSeqno": 0
+        "walletId": 42
       },
       "expectedOutput": {
         "rawAddress": "0:580e5cf91c28af55f55a8589b2b0e6ebe80f33d360cf1d4523582489e872195a",
@@ -117,8 +114,7 @@
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": -1,
-        "walletId": 42,
-        "initialSeqno": 0
+        "walletId": 42
       },
       "expectedOutput": {
         "rawAddress": "-1:580e5cf91c28af55f55a8589b2b0e6ebe80f33d360cf1d4523582489e872195a",
@@ -136,9 +132,9 @@
         "destinationAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d",
         "walletId": 42,
         "seqNo": 1,
-        "amountTonCoins": 1,
+        "amountTonCoins": "0.98",
         "bounceFlag": true,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3
       },
       "expectedOutput": {
@@ -155,7 +151,7 @@
         "seqNo": 1,
         "amountTonCoins": 1,
         "bounceFlag": false,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3
       },
       "expectedOutput": {
@@ -172,9 +168,27 @@
         "seqNo": 1,
         "amountTonCoins": 1,
         "bounceFlag": true,
-        "validUntil": 1000,
+        "validUntil": 1753376922,
         "sendMode": 3,
         "comment": "gift"
+      },
+      "expectedOutput": {
+        "externalMessageBocAsHexWithCrc": "B5EE9C724101020100B20001E18800B01CB9F238515EABEAB50B136561CDD7D01E67A6C19E3A8A46B04913D0E432B405F8978D18B2F6908EF27CD40EDAA88B2337CDBA568A45EA40E7422C77EC6C389FB6B01DCAE8B8C2F5E8F78F2CCFD78CE2D00ACFEBDA5C88D8C56FD9D4C1A618280000015000001F4000000008001C010078620012C72A4B1C534C0572E9E3B1C157E9FA79971A2416D7E1BA8F19AC2C4E46F006A1DCD650000000000000000000000000000000000000676966745ABABAC3"
+      }
+    },
+    "smartcontracts-13": {
+      "description": "Create transfer message using Wallet V4R2. With bounce flag and cell as body <b 8 32 u,>.",
+      "input": {
+        "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
+        "workchain": 0,
+        "destinationAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d",
+        "walletId": 42,
+        "seqNo": 1,
+        "amountTonCoins": "5.56",
+        "bounceFlag": true,
+        "validUntil": 1753376922,
+        "sendMode": 3,
+        "body": "<b 8 32 u, >"
       },
       "expectedOutput": {
         "externalMessageBocAsHexWithCrc": "B5EE9C724101020100B20001E18800B01CB9F238515EABEAB50B136561CDD7D01E67A6C19E3A8A46B04913D0E432B405F8978D18B2F6908EF27CD40EDAA88B2337CDBA568A45EA40E7422C77EC6C389FB6B01DCAE8B8C2F5E8F78F2CCFD78CE2D00ACFEBDA5C88D8C56FD9D4C1A618280000015000001F4000000008001C010078620012C72A4B1C534C0572E9E3B1C157E9FA79971A2416D7E1BA8F19AC2C4E46F006A1DCD650000000000000000000000000000000000000676966745ABABAC3"

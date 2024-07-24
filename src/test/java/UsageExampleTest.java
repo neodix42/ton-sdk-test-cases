@@ -77,13 +77,13 @@ public class UsageExampleTest {
     }
 
     @Test
-    public void testSmartContracts7() throws IOException {
+    public void testSmartContracts3() throws IOException {
 
         // read the JSON file with tests cases
         String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_SMARTCONTRACTS)));
         TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
-        String testId = "smartcontracts-7";
+        String testId = "smartcontracts-3";
 
         // select particular test case by category name and test id
         TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
@@ -105,7 +105,6 @@ public class UsageExampleTest {
                 .wc(workchain)
                 .keyPair(keyPair)
                 .walletId(walletId)
-                .initialSeqno(initialSeqno)
                 .build();
 
         String expectedRawAddress = (String) testCase.getExpectedOutput().get("rawAddress");
