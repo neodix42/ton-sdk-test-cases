@@ -7,8 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.ton.java.address.Address;
+import org.ton.java.cell.CellBuilder;
 import org.ton.java.smartcontract.types.WalletV3Config;
+import org.ton.java.smartcontract.types.WalletV4R2Config;
 import org.ton.java.smartcontract.wallet.v3.WalletV3R2;
+import org.ton.java.smartcontract.wallet.v4.WalletV4R2;
 import org.ton.java.tlb.types.Message;
 import org.ton.java.utils.Utils;
 
@@ -96,7 +99,6 @@ public class UsageExampleTest {
         String privateKey = testCase.getInput().get("privateKey").toString();
         Long workchain = (Long) testCase.getInput().get("workchain");
         Long walletId = (Long) testCase.getInput().get("walletId");
-        Long initialSeqno = (Long) testCase.getInput().get("initialSeqno");
 
         byte[] secretKey = Utils.hexToSignedBytes(privateKey);
         TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(secretKey);
@@ -122,6 +124,59 @@ public class UsageExampleTest {
 
         assertThat(msg.toCell().bitStringToHex().toUpperCase()).isEqualTo(expectedExternalMessageAsHex);
         assertThat(msg.toCell().toHex(true).toUpperCase()).isEqualTo(expectedBocAsHex);
+    }
+
+    @Test
+    public void testSmartContracts13() throws IOException {
+
+        // read the JSON file with tests cases
+        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_SMARTCONTRACTS)));
+        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
+
+        String testId = "smartcontracts-13";
+
+        // select particular test case by category name and test id
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
+
+        String description = testCase.getDescription();
+
+        log.info("testId: {}", testId);
+        log.info("description: {}", description);
+
+        String privateKey = testCase.getInput().get("privateKey").toString();
+        Long workchain = (Long) testCase.getInput().get("workchain");
+        String destinationAddress = testCase.getInput().get("destinationAddress").toString();
+        Long walletId = (Long) testCase.getInput().get("walletId");
+        Long seqno = (Long) testCase.getInput().get("seqNo");
+        BigDecimal amountTonCoins = new BigDecimal(testCase.getInput().get("amountTonCoins").toString());
+        Boolean bounceFlag = (Boolean) testCase.getInput().get("bounceFlag");
+        Long validUntil = (Long) testCase.getInput().get("validUntil");
+        Long sendMode = (Long) testCase.getInput().get("sendMode");
+        String body = testCase.getInput().get("body").toString();
+
+        byte[] secretKey = Utils.hexToSignedBytes(privateKey);
+        TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(secretKey);
+
+        WalletV4R2 contract = WalletV4R2.builder()
+                .wc(workchain)
+                .keyPair(keyPair)
+                .walletId(walletId)
+                .build();
+
+        String expectedBocAsHex = (String) testCase.getExpectedOutput().get("externalMessageBocAsHexWithCrc");
+
+        WalletV4R2Config config = WalletV4R2Config.builder()
+                .walletId(walletId)
+                .seqno(seqno)
+                .destination(Address.of(destinationAddress))
+                .amount(Utils.toNano(amountTonCoins))
+                .validUntil(validUntil)
+                .bounce(bounceFlag)
+                .mode(sendMode.intValue())
+                .body(CellBuilder.beginCell().storeUint(8, 32).endCell())
+                .build();
+        Message sendMsg = contract.prepareExternalMsg(config);
+        assertThat(sendMsg.toCell().toHex(true).toUpperCase()).isEqualTo(expectedBocAsHex);
     }
 
     @Test
