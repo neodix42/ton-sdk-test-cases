@@ -207,6 +207,19 @@
         "balanceOfNanocoinsAtRandomAddress": "1",
         "balanceOfJettonsAtRandomAddress": "20000"
       }
+    },
+    "smartcontracts-15": {
+      "description": "Test USDT 0.20 jettons transfer using V4R2 wallet with a text payload to a random destination.",
+      "input": {
+        "usdtMasterContractAddress": "EQCxE6mUtQJKFnGfaROTKOt1lZbDiiX1kCixRv7Nw2Id_sDs",
+        "amountToncoinsToJettonWallet": "0.02",
+        "amountNanoUsdt": "20000",
+        "forwardAmountNanocoins": 0
+      },
+      "expectedOutput": {
+        "balanceOfNanocoinsAtRandomAddress": "0",
+        "balanceOfJettonsAtRandomAddress": "20000"
+      }
     }
   }
 }
