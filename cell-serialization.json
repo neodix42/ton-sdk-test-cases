@@ -1,13 +1,45 @@
 {
   "testCases": {
     "cell-serialization-1": {
-      "description": "Basic cell serialization.",
+      "description": "Basic cell serialization to pure format and BoC (Bag of Cells).",
       "input": {
-        "inputNumber": 42,
-        "bitLength": 7
+        "bitString": "01",
+        "uint32": 5,
+        "int31": 6,
+        "int1": true,
+        "bocWithCrc": true,
+        "bocWithIndex": false,
+        "bocWithCacheBits": false,
+        "bocWithTopHash": false,
+        "bocWithIntHashes": false
       },
       "expectedOutput": {
-        "resultBocAsHexWithCrc": "b5ee9c72410101010003000001558501ef11"
+        "cellOutput": "x{40000001400000036_}",
+        "bocAsHex": "b5ee9c7241010101000b0000114000000140000003603c39fda2"
+      }
+    },
+    "cell-serialization-2": {
+      "description": "Cell serialization with one reference cell and applying various combinations of BoC serialization flags.",
+      "input": {
+        "cell1_bytes": [
+          65,
+          66,
+          67
+        ],
+        "cell1_uint256": "538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f",
+        "cell1_string": "test sdk",
+        "cell2_int256": "568E7E73CDA9C3D5FF8641E77EED4EE65EDB702EA100290F2E7A043771C9CA5A",
+        "cell2_toncoins": "2.56",
+        "cell2_ref": "cell1",
+        "bocWithCacheBits": false,
+        "bocWithTopHash": false,
+        "bocWithIntHashes": false
+      },
+      "expectedOutput": {
+        "cellOutput": "x{568E7E73CDA9C3D5FF8641E77EED4EE65EDB702EA100290F2E7A043771C9CA5A498968000}\n x{414243538BD272CC81B9D5F470A18A946CBB8FB621CA57593836014E0F12FD5D34942F746573742073646B}",
+        "bocAsHexWithCrcOnly": "b5ee9c72410102010055000149568e7e73cda9c3d5ff8641e77eed4ee65edb702ea100290f2e7a043771c9ca5a4989680008010056414243538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f746573742073646bd2d7a4ab",
+        "bocAsHexWithIndexOnly": "b5ee9c7281010201005500282d0149568e7e73cda9c3d5ff8641e77eed4ee65edb702ea100290f2e7a043771c9ca5a4989680008010056414243538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f746573742073646b",
+        "bocAsHexWithCrcAndIndex": "b5ee9c72c1010201005500282d0149568e7e73cda9c3d5ff8641e77eed4ee65edb702ea100290f2e7a043771c9ca5a4989680008010056414243538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f746573742073646b5b48b32a"
       }
     }
   }
