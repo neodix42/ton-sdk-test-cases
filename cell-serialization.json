@@ -67,7 +67,7 @@
         "cell5_ref4": "cell1"
       },
       "expectedOutput": {
-        "cell5Output": "x{0}\n  x{2_}\n   x{17}\n    x{C_}\n x{2_}\n  x{17}\n   x{C_}\n x{17}\n  x{C_}\n x{C_}",
+        "cell5Output": "x{2D43}\n x{0}\n  x{2_}\n   x{17}\n    x{C_}\n x{2_}\n  x{17}\n   x{C_}\n x{17}\n  x{C_}\n x{C_}",
         "cell5bocAsHexWithCrcOnly": "b5ee9c724101050100170004042d43010203040101080201012003010217040001c0c7df8c89",
         "cell5Hash": "7ba1b6666e6b53c5a99a62da4aa43a69a24e9546a87c1b44c76a9c05d5e5fa6e",
         "cell5Depth": 4,
