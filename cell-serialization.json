@@ -1,7 +1,7 @@
 {
   "testCases": {
     "cell-serialization-1": {
-      "description": "Basic cell serialization to pure format and BoC (Bag of Cells).",
+      "description": "Basic cell serialization to fift output format and BoC (Bag of Cells).",
       "input": {
         "bitString": "01",
         "uint32": 5,
@@ -43,6 +43,36 @@
         "bocAsHexWithIndexOnly": "b5ee9c7281010201007600492d018b568e7e73cda9c3d5ff8641e77eed4ee65edb702ea100290f2e7a043771c9ca5a4989680008004b1ca92c714d3015cba78ec7055fa7e9e65c68905b5f86ea3c66b0b1391bc01b010056414243538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f746573742073646b",
         "bocAsHexWithCrcAndIndex": "b5ee9c72c1010201007600492d018b568e7e73cda9c3d5ff8641e77eed4ee65edb702ea100290f2e7a043771c9ca5a4989680008004b1ca92c714d3015cba78ec7055fa7e9e65c68905b5f86ea3c66b0b1391bc01b010056414243538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f746573742073646b69facb32",
         "cellHash": "6ec12a704660e28156a191157e5655542251859f3db1a8f75ac9523dba3575ee"
+      }
+    },
+    "cell-serialization-3": {
+      "description": "Testing cell's depth, refs and bits descriptor calculations.",
+      "input": {
+        "cell1_bits": "1",
+        "cell2_bytes": [
+          23
+        ],
+        "cell2_ref": "cell1",
+        "cell3_address": "null",
+        "cell3_ref": "cell2",
+        "cell4_toncoins": "0",
+        "cell4_ref": "cell3",
+        "cell5_bytes": [
+          45,
+          67
+        ],
+        "cell5_ref1": "cell4",
+        "cell5_ref2": "cell3",
+        "cell5_ref3": "cell2",
+        "cell5_ref4": "cell1"
+      },
+      "expectedOutput": {
+        "cell5Output": "x{0}\n  x{2_}\n   x{17}\n    x{C_}\n x{2_}\n  x{17}\n   x{C_}\n x{17}\n  x{C_}\n x{C_}",
+        "cell5bocAsHexWithCrcOnly": "b5ee9c724101050100170004042d43010203040101080201012003010217040001c0c7df8c89",
+        "cell5Hash": "7ba1b6666e6b53c5a99a62da4aa43a69a24e9546a87c1b44c76a9c05d5e5fa6e",
+        "cell5Depth": 4,
+        "cell5RefsDescriptorHex": "04",
+        "cell5BitsDescriptorHex": "04"
       }
     }
   }
