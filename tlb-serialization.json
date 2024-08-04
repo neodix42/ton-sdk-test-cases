@@ -1,0 +1,26 @@
+{
+  "testCases": {
+    "tlb-serialization-1": {
+      "description": "All TL-B types can be found in block.tlb file. MsgAddress serialization.",
+      "input": {
+        "addr1_none": "",
+        "addr2_external_len": 16,
+        "addr2_external_bits": "0010110101110011",
+        "addr3_std_wc": 1,
+        "addr3_std_address_bits256": "538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f",
+        "addr4_var_wc": 1,
+        "addr4_var_len": 3,
+        "addr4_var_bits_len": "010",
+        "addr5_anycast_depth": 4,
+        "addr5_anycast_pfx_depth": "0101",
+        "addr5_std_wc": 1,
+        "addr5_std_address_bits256": "138bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942a",
+        "bocWithCrc": true
+      },
+      "expectedOutput": {
+        "bocAsHexAddr1": "b5ee9c724101010100030000012094418655",
+        "bocAsHexAddr2": "b5ee9c724101010100060000074205ae704890eb4c"
+      }
+    }
+  }
+}

@@ -2,6 +2,40 @@
 
 Generic set of use cases for testing implementation of various TON libraries and interfaces.
 
+## Covered and planned use cases
+
+- Address
+    - parsing
+- Math operations
+    - parsing
+- Cryptography
+    - crc32
+- Wallets
+    - toncoin transfer using v3r2 and v4r2 wallets
+    - jetton transfer using v3r2 and v4r2 wallets
+    - toncoin transfer using high load v2 wallet
+    - jetton transfer using high load v2 wallet
+- Cell
+    - serialization
+        - Basic cell serialization to fift output format and BoC (Bag of
+          Cells) [test](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json#L3) [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellSerialization.java#L38)
+        - Cell serialization with one reference cell and applying various combinations of BoC serialization flags.
+        - Testing cell's depth, refs and bits descriptor calculations.
+        -
+    - deserialization
+- TL-B
+    - serialization
+        - MsgAddress, InMsg, ShardDescr
+    - deserialization
+        - MsgAddress, OutMsg, ShardDescr
+- TON Hashmaps
+    - serialization
+        - TonHashmap, TonHashmapE, TonHashmapAug, TonHashmapAugE, TonHashmapPfx, TonHashmapPfxE
+    - deserialization
+        - TonHashmap, TonHashmapE, TonHashmapAug, TonHashmapAugE, TonHashmapPfx, TonHashmapPfxE
+- Lite-client
+    - get method input parameters
+
 ## JSON data file structure
 
 Root element in JSON called - `testCases`.
@@ -39,64 +73,64 @@ Download JSON data file with test cases and put it to your folder [TonSdkTestCas
 https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/TonSdkTestCases.json)
 
 ```java
-public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
+public static final String TON_TEST_CASES_FILE_NAME="TonSdkTestCases.json";
 
-Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
+        Gson gson=new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
 @Test
-public void testWalletV3R2Creation() throws IOException {
+public void testWalletV3R2Creation()throws IOException{
 
-    // read the JSON file with tests cases
-    String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-    TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
+        // read the JSON file with tests cases
+        String fileContentWithUseCases=new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+        TonSdkTestCases tonSdkTestCases=gson.fromJson(fileContentWithUseCases,TonSdkTestCases.class);
 
-    // select particular test case by category name and test id
-    TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("wallets").get("9");
+        // select particular test case by category name and test id
+        TonSdkTestCases.TestCase testCase=tonSdkTestCases.getTestCases().get("wallets").get("9");
 
-    // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
-    String testId = testCase.getId();
-    String description = testCase.getDescription();
+        // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
+        String testId=testCase.getId();
+        String description=testCase.getDescription();
 
-    log.info("testId: {}", testId);
-    log.info("description: {}", description);
+        log.info("testId: {}",testId);
+        log.info("description: {}",description);
 
-    // fetch and print input parameters
-    String prvKey = (String) testCase.getInput().get("prvKey");
-    Long workchain = (Long) testCase.getInput().get("wc");
-    Long walletId = (Long) testCase.getInput().get("walletId");
+        // fetch and print input parameters
+        String prvKey=(String)testCase.getInput().get("prvKey");
+        Long workchain=(Long)testCase.getInput().get("wc");
+        Long walletId=(Long)testCase.getInput().get("walletId");
 
-    log.info("input parameters:");
-    log.info("  prvKey: {}", prvKey);
-    log.info("  workchain: {}", workchain);
-    log.info("  walletId: {}", walletId);
+        log.info("input parameters:");
+        log.info("  prvKey: {}",prvKey);
+        log.info("  workchain: {}",workchain);
+        log.info("  walletId: {}",walletId);
 
-    // test the functionality of your library
+        // test the functionality of your library
 
-    TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(Utils.hexToSignedBytes(prvKey));
+        TweetNaclFast.Signature.KeyPair keyPair=TweetNaclFast.Signature.keyPair_fromSeed(Utils.hexToSignedBytes(prvKey));
 
-    WalletV3R2 contract = WalletV3R2.builder()
-            .wc(workchain)
-            .keyPair(keyPair)
-            .walletId(walletId)
-            .build();
+        WalletV3R2 contract=WalletV3R2.builder()
+        .wc(workchain)
+        .keyPair(keyPair)
+        .walletId(walletId)
+        .build();
 
-    String actualRawAddress = contract.getAddress().toRaw();
+        String actualRawAddress=contract.getAddress().toRaw();
 
-    Message msg = contract.prepareDeployMsg();
+        Message msg=contract.prepareDeployMsg();
 
-    String actualExtMsgForSerializationAsBoc = Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
+        String actualExtMsgForSerializationAsBoc=Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
 
-    // fetch the expected result and compare it against the actual one
-    String expectedRawAddress = (String) testCase.getExpectedOutput().get("rawAddress");
-    String expectedBocAsHex = (String) testCase.getExpectedOutput().get("bocAsHex");
+        // fetch the expected result and compare it against the actual one
+        String expectedRawAddress=(String)testCase.getExpectedOutput().get("rawAddress");
+        String expectedBocAsHex=(String)testCase.getExpectedOutput().get("bocAsHex");
 
-    log.info("expected results:");
-    log.info("  rawAddress: {}", expectedRawAddress);
-    log.info("  bocAsHex: {}", expectedBocAsHex);
+        log.info("expected results:");
+        log.info("  rawAddress: {}",expectedRawAddress);
+        log.info("  bocAsHex: {}",expectedBocAsHex);
 
-    assertThat(actualRawAddress).isEqualTo(expectedRawAddress);
-    assertThat(actualExtMsgForSerializationAsBoc).isEqualTo(expectedBocAsHex);
-}
+        assertThat(actualRawAddress).isEqualTo(expectedRawAddress);
+        assertThat(actualExtMsgForSerializationAsBoc).isEqualTo(expectedBocAsHex);
+        }
 ```
 
 More examples can be found [here](./src/test/java/UsageExampleTest.java).
