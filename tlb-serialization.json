@@ -10,7 +10,7 @@
         "addr3_std_address_bits256": "538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f",
         "addr4_var_wc": 1,
         "addr4_var_len": 3,
-        "addr4_var_bits_len": "010",
+        "addr4_var_bits": "010",
         "addr5_anycast_depth": 4,
         "addr5_anycast_pfx_depth": "0101",
         "addr5_std_wc": 1,
@@ -19,7 +19,10 @@
       },
       "expectedOutput": {
         "bocAsHexAddr1": "b5ee9c724101010100030000012094418655",
-        "bocAsHexAddr2": "b5ee9c724101010100060000074205ae704890eb4c"
+        "bocAsHexAddr2": "b5ee9c724101010100060000074205ae704890eb4c",
+        "bocAsHexAddr3": "b5ee9c72410101010024000043802a717a4e5990373abe8e1431528d9771f6c4394aeb2706c029c1e25faba69285f0ca5fa6f2",
+        "bocAsHexAddr4": "b5ee9c7241010101000800000bc03000000015bb8e0253",
+        "bocAsHexAddr5": "b5ee9c72410101010025000045a4501138bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942a88c5d95df"
       }
     }
   }
