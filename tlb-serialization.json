@@ -34,6 +34,7 @@
         "shard2_prefix_bits": 1,
         "shard3_prefix": 1,
         "shard3_prefix_bits": 1,
+        "shard1_prefix_as_hex": "8000000000000000",
         "shard4_prefix_as_hex": "6000000000000000"
       },
       "expectedOutput": {
