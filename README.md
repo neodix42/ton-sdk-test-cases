@@ -90,17 +90,22 @@ Generic set of use cases for testing implementation of various TON libraries and
 8. Insane deserialization, issue https://github.com/toncenter/tonweb/issues/74
 9. Cell with Account State deserialization.
 
-### TL-B (to finish)
+### TL-B
 
 #### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbSerialization.java)
 
 1. MsgAddress serialization.
-2. MsgAddress serialization.
+2. ShardIdent construction, parent and children lookup.
+3. StorageInfo.storage_info$_ serialization
 
 #### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbDeserialization.java)
 
-1. MsgAddress deserialization.
-2. MsgAddress deserialization.
+1. CommonMsgInfo.int_msg_info$0 deserialization.
+2. CommonMsgInfo.ext_in_msg_info$10 deserialization.
+3. BlockInfo.block_info#9bc7a987 deserialization.
+4. Block.block#11ef55aa master block deserialization.
+5. Block.block#11ef55aa workchain block deserialization.
+6. Block.block#11ef55aa complex block deserialization.
 
 ### TON Hashmaps (todo)
 

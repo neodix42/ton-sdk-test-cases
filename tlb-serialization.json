@@ -26,7 +26,7 @@
       }
     },
     "tlb-serialization-2": {
-      "description": "ShardIdent construction, parent and children lookup",
+      "description": "ShardIdent construction, parent and children lookup.",
       "input": {
         "shard1_prefix": 0,
         "shard1_prefix_bits": 0,
@@ -49,6 +49,21 @@
         "shard4_child_left": "5000000000000000",
         "shard4_child_right": "7000000000000000",
         "shard4_parent": "4000000000000000"
+      }
+    },
+    "tlb-serialization-3": {
+      "description": "StorageInfo.storage_info$_ serialization.",
+      "input": {
+        "storageUsed_BitsUsed": 5,
+        "storageUsed_CellsUsed": 3,
+        "storageUsed_PublicCellsUsed": 3,
+        "storageInfo_StorageUsed": "storageUsed",
+        "storageInfo_LastPaid": 1709674914,
+        "storageInfo_DuePayment": 12
+      },
+      "expectedOutput": {
+        "cell_print": "x{20A40C81B2F3C8D14432_}",
+        "boc_as_hex_with_crc": "b5ee9c7241010101000c00001320a40c81b2f3c8d14432534dde1f"
       }
     }
   }
