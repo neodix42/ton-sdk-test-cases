@@ -29,6 +29,7 @@
       "description": "Hashmap with mixed empty edges (network-config) deserialization.",
       "input": {
         "keySizeBits": 32,
+        "intValueSizeBits": 32,
         "bocBase64": "te6cckEBEwEAVwACASABAgIC2QMEAgm3///wYBESAgEgBQYCAWIODwIBIAcIAgHODQ0CAdQNDQIBIAkKAgEgCxACASAQDAABWAIBIA0NAAEgAgEgEBAAAdQAAUgAAfwAAdwXk+eF"
       },
       "expectedOutput": {
@@ -46,7 +47,7 @@
       },
       "expectedOutput": {
         "elementsCount": 3,
-        "firstElementValue": 1
+        "firstElementValue": 169
       }
     },
     "hashmap-deserialization-5": {
