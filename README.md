@@ -4,7 +4,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ## Use cases
 
-### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java)
+### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java))
 
 1. Test conversion of raw address in a base chain.
 2. Test conversion of raw address in a master chain.
@@ -19,7 +19,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 11. Test conversion of raw address with too short hash size.
 12. Test conversion of raw address with too long hash size.
 
-### [Math operations](https://github.com/neodix42/ton-sdk-test-cases/blob/main/numbers.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesNumbers.java)
+### [Math operations](https://github.com/neodix42/ton-sdk-test-cases/blob/main/numbers.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesNumbers.java))
 
 1. Check big number comparison.
 2. Check toncoin sum and rounding to 2 decimals HALF_UP.
@@ -30,7 +30,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 7. Check fromNano() near max value overflow, 2^120.
 8. Check fromNano() max value, 2^120-1.
 
-### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java)
+### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java))
 
 1. CRC32C algorithm using the polynomial 0x1EDC6F41 tests.
 2. CRC-16/XMODEM algorithm tests.
@@ -39,7 +39,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 5. Signing with Ed25519 string test.
 6. MD5 tests.
 
-### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java)
+### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java))
 
 1. Wallet V3R2 code cell serialized.
 2. Creation of Wallet V3R2 deploy external message.
@@ -70,14 +70,14 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### Cell
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellSerialization.java))
 
 1. Basic cell serialization to fift output format and BoC (Bag of Cells).
 2. Cell serialization with one reference cell and applying various combinations of BoC
    serialization flags.
 3. Testing cell's depth, refs and bits descriptor calculations.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellDeserialization.java))
 
 1. Basic cell deserialization.
 2. Basic cell with refs deserialization.
@@ -92,13 +92,13 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TL-B
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesTlbSerialization.java))
 
 1. MsgAddress serialization.
 2. ShardIdent construction, parent and children lookup.
 3. StorageInfo.storage_info$_ serialization
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesTlbDeserialization.java))
 
 1. CommonMsgInfo.int_msg_info$0 deserialization.
 2. CommonMsgInfo.ext_in_msg_info$10 deserialization.
@@ -108,7 +108,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TON Hashmaps
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapSerialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with one entry serialization.
@@ -119,7 +119,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 7. PfxHashmap serialization.
 8. PfxHashmapE serialization.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapDeserialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with both edges deserialization.
@@ -165,7 +165,7 @@ Download JSON data file ([TonSdkTestCases.json](
 https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/TonSdkTestCases.json)) with test cases and put it to
 appropriate place.
 
-```
+```java
 public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
 
 Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
@@ -173,56 +173,56 @@ Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_D
 @Test
 public void testWalletV3R2Creation() throws IOException {
 
-        // read the JSON file with tests cases
-        String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
-        TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
+    // read the JSON file with tests cases
+    String fileContentWithUseCases = new String(Files.readAllBytes(Paths.get(TON_TEST_CASES_FILE_NAME)));
+    TonSdkTestCases tonSdkTestCases = gson.fromJson(fileContentWithUseCases, TonSdkTestCases.class);
 
-        // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("wallets").get("9");
+    // select particular test case by category name and test id
+    TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get("wallets").get("9");
 
-        // fetch test's description and id. It's always good to show test id,  since it is unique across all tests.
-        String testId = testCase.getId();
-        String description = testCase.getDescription();
+    // fetch test's description and id. It's always good to show test id,  since it is unique across all tests.
+    String testId = testCase.getId();
+    String description = testCase.getDescription();
 
-        log.info("testId: {}", testId);
-        log.info("description: {}", description);
+    log.info("testId: {}", testId);
+    log.info("description: {}", description);
 
-        // fetch and print input parameters
-        String prvKey = (String)testCase.getInput().get("prvKey");
-        Long workchain = (Long)testCase.getInput().get("wc");
-        Long walletId = (Long)testCase.getInput().get("walletId");
+    // fetch and print input parameters
+    String prvKey = (String)testCase.getInput().get("prvKey");
+    Long workchain = (Long)testCase.getInput().get("wc");
+    Long walletId = (Long)testCase.getInput().get("walletId");
 
-        log.info("input parameters:");
-        log.info("  prvKey: {}", prvKey);
-        log.info("  workchain: {}", workchain);
-        log.info("  walletId: {}", walletId);
+    log.info("input parameters:");
+    log.info("  prvKey: {}", prvKey);
+    log.info("  workchain: {}", workchain);
+    log.info("  walletId: {}", walletId);
 
-        // test the functionality of your library
+    // test the functionality of your library
 
-        TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(Utils.hexToSignedBytes(prvKey));
+    TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(Utils.hexToSignedBytes(prvKey));
 
-        WalletV3R2 contract = WalletV3R2.builder()
-            .wc(workchain)
-            .keyPair(keyPair)
-            .walletId(walletId)
-            .build();
+    WalletV3R2 contract = WalletV3R2.builder()
+        .wc(workchain)
+        .keyPair(keyPair)
+        .walletId(walletId)
+        .build();
 
-        String actualRawAddress = contract.getAddress().toRaw();
+    String actualRawAddress = contract.getAddress().toRaw();
 
-        Message msg = contract.prepareDeployMsg();
+    Message msg = contract.prepareDeployMsg();
 
-        String actualExtMsgForSerializationAsBoc = Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
+    String actualExtMsgForSerializationAsBoc = Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
 
-        // fetch the expected result and compare it against the actual one
-        String expectedRawAddress = (String)testCase.getExpectedOutput().get("rawAddress");
-        String expectedBocAsHex = (String)testCase.getExpectedOutput().get("bocAsHex");
+    // fetch the expected result and compare it against the actual one
+    String expectedRawAddress = (String)testCase.getExpectedOutput().get("rawAddress");
+    String expectedBocAsHex = (String)testCase.getExpectedOutput().get("bocAsHex");
 
-        log.info("expected results:");
-        log.info("  rawAddress: {}", expectedRawAddress);
-        log.info("  bocAsHex: {}", expectedBocAsHex);
+    log.info("expected results:");
+    log.info("  rawAddress: {}", expectedRawAddress);
+    log.info("  bocAsHex: {}", expectedBocAsHex);
 
-        assertThat(actualRawAddress).isEqualTo(expectedRawAddress);
-        assertThat(actualExtMsgForSerializationAsBoc).isEqualTo(expectedBocAsHex);
+    assertThat(actualRawAddress).isEqualTo(expectedRawAddress);
+    assertThat(actualExtMsgForSerializationAsBoc).isEqualTo(expectedBocAsHex);
 }
 ```
 
