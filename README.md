@@ -4,7 +4,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ## Use cases
 
-### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java)
+### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java)
 
 1. Test conversion of raw address in a base chain.
 2. Test conversion of raw address in a master chain.
@@ -19,7 +19,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 11. Test conversion of raw address with too short hash size.
 12. Test conversion of raw address with too long hash size.
 
-### [Math operations](https://github.com/neodix42/ton-sdk-test-cases/blob/main/numbers.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesNumbers.java)
+### [Math operations](https://github.com/neodix42/ton-sdk-test-cases/blob/main/numbers.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesNumbers.java)
 
 1. Check big number comparison.
 2. Check toncoin sum and rounding to 2 decimals HALF_UP.
@@ -30,7 +30,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 7. Check fromNano() near max value overflow, 2^120.
 8. Check fromNano() max value, 2^120-1.
 
-### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java)
+### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java)
 
 1. CRC32C algorithm using the polynomial 0x1EDC6F41 tests.
 2. CRC-16/XMODEM algorithm tests.
@@ -39,7 +39,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 5. Signing with Ed25519 string test.
 6. MD5 tests.
 
-### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java)
+### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java)
 
 1. Wallet V3R2 code cell serialized.
 2. Creation of Wallet V3R2 deploy external message.
@@ -70,14 +70,14 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### Cell
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellSerialization.java)
 
 1. Basic cell serialization to fift output format and BoC (Bag of Cells).
 2. Cell serialization with one reference cell and applying various combinations of BoC
    serialization flags.
 3. Testing cell's depth, refs and bits descriptor calculations.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesCellDeserialization.java)
 
 1. Basic cell deserialization.
 2. Basic cell with refs deserialization.
@@ -92,13 +92,13 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TL-B
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbSerialization.java)
 
 1. MsgAddress serialization.
 2. ShardIdent construction, parent and children lookup.
 3. StorageInfo.storage_info$_ serialization
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/cell/TestTonSdkTestCasesTlbDeserialization.java)
 
 1. CommonMsgInfo.int_msg_info$0 deserialization.
 2. CommonMsgInfo.ext_in_msg_info$10 deserialization.
@@ -108,23 +108,26 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TON Hashmaps
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapSerialization.java)
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapSerialization.java)
 
-1. TonHashmap serialization.
-2. TonHashmapE serialization.
-3. TonHashmapAug serialization.
-4. TonHashmapAugE serialization.
-5. TonHashmapPfx serialization.
-6. TonHashmapPfxE serialization.
+1. Hashmap serialization.
+2. Hashmap with one entry serialization.
+3. Empty Hashmap serialization.
+4. HashmapE serialization.
+5. HashmapE with one entry serialization.
+6. Empty HashmapE serialization.
+7. PfxHashmap serialization.
+8. PfxHashmapE serialization.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapDeserialization.java)
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) [(implemented: ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapDeserialization.java)
 
-1. TonHashmap serialization.
-2. TonHashmapE serialization.
-3. TonHashmapAug serialization.
-4. TonHashmapAugE serialization.
-5. TonHashmapPfx serialization.
-6. TonHashmapPfxE serialization.
+1. Hashmap serialization.
+2. Hashmap with both edges deserialization.
+3. Hashmap with mixed empty edges (network-config) deserialization.
+4. HashmapE with empty right edge deserialization.
+5. PfxHashmap deserialization.
+6. HashmapAug deserialization.
+7. HashmapAugE deserialization.
 
 ## JSON data file structure
 
@@ -156,13 +159,15 @@ https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/scheme.json) 
 
 ## How to use?
 
-### Example provided for ton4j library
+### Example provided for ton4j (java) library
 
-Download JSON data file with test cases and put it to your folder [TonSdkTestCases.json](
-https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/TonSdkTestCases.json)
+Download JSON data file ([TonSdkTestCases.json](
+https://raw.githubusercontent.com/neodix42/ton-sdk-test-cases/main/TonSdkTestCases.json)) with test cases and put it to
+appropriate place.
 
 ```
 public static final String TON_TEST_CASES_FILE_NAME = "TonSdkTestCases.json";
+
 Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
 @Test

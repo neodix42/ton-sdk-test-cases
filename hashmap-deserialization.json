@@ -1,0 +1,95 @@
+{
+  "testCases": {
+    "hashmap-deserialization-1": {
+      "description": "Hashmap deserialization.",
+      "input": {
+        "keySizeBits": 64,
+        "uintValueSizeBits": 8,
+        "bocHex": "B5EE9C7241010A010032000203CE6001020201200303020120030402012005050201CE080802012006060201200707020120080802012009090003006001FFF7D9"
+      },
+      "expectedOutput": {
+        "elementsCount": 100,
+        "firstElementValue": 1
+      }
+    },
+    "hashmap-deserialization-2": {
+      "description": "Hashmap with both edges deserialization.",
+      "input": {
+        "keySizeBits": 16,
+        "uintValueSizeBits": 16,
+        "bocHex": "B5EE9C7241010501001D0002012001020201CF03040009BC0068054C0007B91012180007BEFDF218CFA830D9"
+      },
+      "expectedOutput": {
+        "elementsCount": 3,
+        "thirdElementKey": 32781,
+        "thirdElementValue": 169
+      }
+    },
+    "hashmap-deserialization-3": {
+      "description": "Hashmap with mixed empty edges (network-config) deserialization.",
+      "input": {
+        "keySizeBits": 32,
+        "bocBase64": "te6cckEBEwEAVwACASABAgIC2QMEAgm3///wYBESAgEgBQYCAWIODwIBIAcIAgHODQ0CAdQNDQIBIAkKAgEgCxACASAQDAABWAIBIA0NAAEgAgEgEBAAAdQAAUgAAfwAAdwXk+eF"
+      },
+      "expectedOutput": {
+        "elementsCount": 14,
+        "thirdElementKey": 9,
+        "lastElementKey": -1000
+      }
+    },
+    "hashmap-deserialization-4": {
+      "description": "HashmapE with empty right edge deserialization.",
+      "input": {
+        "keySizeBits": 16,
+        "uintValueSizeBits": 16,
+        "bocHex": "B5EE9C72410106010020000101C0010202C8020302016204050007BEFDF2180007A68054C00007A08090C08D16037D"
+      },
+      "expectedOutput": {
+        "elementsCount": 3,
+        "firstElementValue": 1
+      }
+    },
+    "hashmap-deserialization-5": {
+      "description": "PfxHashmap deserialization.",
+      "input": {
+        "keySizeBits": 267,
+        "booleanValueSizeBits": 1,
+        "bocHex": "B5EE9C7241010501007A00020374C001020045A0E034CD6A3000596F07C3F0AB332935D3E3FC98F1E78F6AE1FC710EA4D98732772F1002057FBFB003040043BFB333333333333333333333333333333333333333333333333333333333333333400043BF955555555555555555555555555555555555555555555555555555555555555540DE161D24"
+      },
+      "expectedOutput": {
+        "elementsCount": 3,
+        "firstElementKey": "EQDTNajAAWW8Hw_CrMyk10-P8mPHnj2rh_HEOpNmHMncvGae"
+      }
+    },
+    "hashmap-deserialization-6": {
+      "description": "HashmapAug deserialization.",
+      "input": {
+        "keySizeBits": 32,
+        "uintValueSizeBits": 32,
+        "uintEdgeSizeBits": 32,
+        "bocHex": "b5ee9c724101130100c000020bce2c00000640020102094d00000898070902090b000004a00a03020900000011a0041002090000001720060500110000003840000003e00011000000240000000320020900000051a0080f00110000009000000006200011d000003840000001e802092c000001e00b0c0011b00000009000000038020900000007600d0e00110000000900000001a000110000001440000002600011000000b640000006e002090000002fe0121100110000006e400000056000110000005100000004a034f83fbf"
+      },
+      "expectedOutput": {
+        "elementsCount": 10,
+        "firstElementKey": 1,
+        "firstElementValue": 3,
+        "firstElementEdge": 9
+      }
+    },
+    "hashmap-deserialization-7": {
+      "description": "HashmapAugE deserialization.",
+      "input": {
+        "keySizeBits": 32,
+        "uintValueSizeBits": 32,
+        "uintEdgeSizeBits": 32,
+        "bocHex": "b5ee9c7201010401002800010980000016c001020bcf00000016c0020300115000000090000000380011400000024000000068"
+      },
+      "expectedOutput": {
+        "elementsCount": 2,
+        "firstElementKey": 1,
+        "firstElementValue": 3,
+        "firstElementEdge": 9
+      }
+    }
+  }
+}

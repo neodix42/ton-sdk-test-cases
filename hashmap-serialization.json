@@ -1,7 +1,7 @@
 {
   "testCases": {
     "hashmap-serialization-1": {
-      "description": "Simple Hashmap serialization.",
+      "description": "Hashmap serialization.",
       "input": {
         "keySizeBits": 9,
         "valueSizeBits": 3,
@@ -45,7 +45,7 @@
       }
     },
     "hashmap-serialization-4": {
-      "description": "Simple HashmapE serialization.",
+      "description": "HashmapE serialization.",
       "input": {
         "keySizeBits": 9,
         "key1": 100,
@@ -89,7 +89,7 @@
       }
     },
     "hashmap-serialization-7": {
-      "description": "Simple PfxHashmap serialization.",
+      "description": "PfxHashmap serialization.",
       "input": {
         "keySizeBits": 9,
         "valueSizeBits": 3,
@@ -109,7 +109,7 @@
       }
     },
     "hashmap-serialization-8": {
-      "description": "Simple PfxHashmapE serialization.",
+      "description": "PfxHashmapE serialization.",
       "input": {
         "keySizeBits": 9,
         "valueSizeBits": 3,
