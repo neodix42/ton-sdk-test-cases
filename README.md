@@ -102,12 +102,11 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 1. CommonMsgInfo.int_msg_info$0 deserialization.
 2. CommonMsgInfo.ext_in_msg_info$10 deserialization.
-3. BlockInfo.block_info#9bc7a987 deserialization.
-4. Block.block#11ef55aa master block deserialization.
-5. Block.block#11ef55aa workchain block deserialization.
-6. Block.block#11ef55aa complex block deserialization.
+3. Master block deserialization.
+4. Workchain block deserialization.
+5. Complex block deserialization.
 
-### TON Hashmaps (todo)
+### TON Hashmaps
 
 #### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) [(ton4j)](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/cell/TestTonSdkTestCasesHashmapSerialization.java)
 
