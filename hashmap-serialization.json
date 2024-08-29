@@ -1,0 +1,132 @@
+{
+  "testCases": {
+    "hashmap-serialization-1": {
+      "description": "Simple Hashmap serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3,
+        "key1": 100,
+        "value1": 1,
+        "key2": 200,
+        "value2": 2,
+        "key3": 300,
+        "value3": 3,
+        "key4": 400,
+        "value4": 4
+      },
+      "expectedOutput": {
+        "cellPrint": "x{2_}\n x{2_}\n  x{BE43_}\n  x{BC85_}\n x{2_}\n  x{BAC7_}\n  x{B909_}",
+        "cellHash": "dafd9316480871abd6444cfe5885c967cee25240e8606e629a6e516722b2d0bb",
+        "cellBocWithCrc": "b5ee9c7241010701001f00020120010402012002030003be430003bc8502012005060003bac70003b909bfadec84"
+      }
+    },
+    "hashmap-serialization-2": {
+      "description": "Hashmap with one entry serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3,
+        "key1": 100,
+        "value1": 1
+      },
+      "expectedOutput": {
+        "cellPrint": "x{A4C86_}",
+        "cellHash": "81a3f287e8201232acb95d20aa5404d71400616b66e63be68887375d5341fcf3",
+        "cellBocWithCrc": "b5ee9c72410101010005000005a4c86083c4c62b"
+      }
+    },
+    "hashmap-serialization-3": {
+      "description": "Empty Hashmap serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3
+      },
+      "expectedOutput": {
+        "error": "should throw an error"
+      }
+    },
+    "hashmap-serialization-4": {
+      "description": "Simple HashmapE serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "key1": 100,
+        "value1": "0QAljlSWOKaYCuXTx2OCr9P08y40SC2vw3UeM1hYnI3gDY7I",
+        "key2": 200,
+        "value2": "Uf-CRYz9HRGdb19t7DOZUfUjwUZmngz-zJvpD8vpmF3xqeXg",
+        "key3": 300,
+        "value3": "UQCnuv+ZuR0QsIh5vwxUBuzzocSowbCa7ctdwl6QizBKzDiJ",
+        "key4": 400,
+        "value4": "Ef8zMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzM0vF"
+      },
+      "expectedOutput": {
+        "cellPrint": "x{C_}\n x{2_}\n  x{2_}\n   x{BE48004B1CA92C714D3015CBA78EC7055FA7E9E65C68905B5F86EA3C66B0B1391BC01B_}\n   x{BC89FF048B19FA3A233ADEBEDBD86732A3EA47828CCD3C19FD9937D21F97D330BBE353_}\n  x{2_}\n   x{BAC8014F75FF33723A216110F37E18A80DD9E7438951836135DB96BB84BD2116609599_}\n   x{B909FE6666666666666666666666666666666666666666666666666666666666666667_}",
+        "cellHash": "f297a84fb4182163c1e2a9568861b5b27f899617eb86482853ff56012e3ce539",
+        "cellBocWithCrc": "b5ee9c724101080100a7000101c001020120020502012003040045be48004b1ca92c714d3015cba78ec7055fa7e9e65c68905b5f86ea3c66b0b1391bc01b0045bc89ff048b19fa3a233adebedbd86732a3ea47828ccd3c19fd9937d21f97d330bbe35302012006070045bac8014f75ff33723a216110f37e18a80dd9e7438951836135db96bb84bd21166095990045b909fe6666666666666666666666666666666666666666666666666666666666666667884ec6c5"
+      }
+    },
+    "hashmap-serialization-5": {
+      "description": "HashmapE with one entry serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "key1": 100,
+        "value1": "0QAljlSWOKaYCuXTx2OCr9P08y40SC2vw3UeM1hYnI3gDY7I"
+      },
+      "expectedOutput": {
+        "cellPrint": "x{C_}\n x{A4C900096395258E29A602B974F1D8E0ABF4FD3CCB8D120B6BF0DD478CD616272378036_}",
+        "cellHash": "a01b7ab5a7c84ff7fa16f0fc3994fafd345f453f1f84854586726373824dc7c0",
+        "cellBocWithCrc": "b5ee9c7241010201002a000101c0010047a4c900096395258e29a602b974f1d8e0abf4fd3ccb8d120b6bf0dd478cd6162723780360a2944e70"
+      }
+    },
+    "hashmap-serialization-6": {
+      "description": "Empty HashmapE serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3
+      },
+      "expectedOutput": {
+        "cellPrint": "x{4_}",
+        "cellHash": "90aec8965afabb16ebc3cb9b408ebae71b618d78788bc80d09843593cac98da4",
+        "cellBocWithCrc": "b5ee9c7241010101000300000140f6d24034"
+      }
+    },
+    "hashmap-serialization-7": {
+      "description": "Simple PfxHashmap serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3,
+        "key1": 100,
+        "value1": 1,
+        "key2": 200,
+        "value2": 2,
+        "key3": 300,
+        "value3": 3,
+        "key4": 400,
+        "value4": 4
+      },
+      "expectedOutput": {
+        "cellPrint": "x{3_}\n x{3_}\n  x{BE41}\n  x{BC82}\n x{3_}\n  x{BAC3}\n  x{B904}",
+        "cellHash": "df28c67a84cc778ad9d71bef19b14d818d1576fea31665135ac38d4d5e5dd7c3",
+        "cellBocWithCrc": "b5ee9c7241010701001f00020130010402013002030004be410004bc8202013005060004bac30004b9047fa5e8c7"
+      }
+    },
+    "hashmap-serialization-8": {
+      "description": "Simple PfxHashmapE serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "valueSizeBits": 3,
+        "key1": 100,
+        "value1": 1,
+        "key2": 200,
+        "value2": 2,
+        "key3": 300,
+        "value3": 3,
+        "key4": 400,
+        "value4": 4
+      },
+      "expectedOutput": {
+        "cellPrint": "x{C_}\n x{3_}\n  x{3_}\n   x{BE41}\n   x{BC82}\n  x{3_}\n   x{BAC3}\n   x{B904}",
+        "cellHash": "9b0c87426eda8fa6e616a005a82cc71a013fd36dd06a8865a85e0668130a83df",
+        "cellBocWithCrc": "b5ee9c72410108010023000101c001020130020502013003040004be410004bc8202013006070004bac30004b904487c1817"
+      }
+    }
+  }
+}
