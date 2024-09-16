@@ -2,7 +2,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.ton.java.smartcontract.FiftRunner;
+import org.ton.java.fift.FiftRunner;
 
 import java.io.File;
 import java.net.URISyntaxException;

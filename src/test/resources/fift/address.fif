@@ -16,7 +16,13 @@ constant wc
 ."wallet_addr: " wallet_addr x. cr
 ."wc: " wc . cr
 ."Source wallet address = " wc wallet_addr .addr cr
+
 ."Non-bounceable address (for init only): " wc wallet_addr 1 .Addr cr
 ."Bounceable address (for later access): " wc wallet_addr 0 .Addr cr
 ."Non-bounceable address, Base64url (for init): " wc wallet_addr 5 .Addr cr
 ."Bounceable address, Base64url (for later access): " wc wallet_addr 4 .Addr cr
+
+."Non-bounceable test address (for init only): " wc wallet_addr 3 .Addr cr
+."Bounceable test address (for later access): " wc wallet_addr 2 .Addr cr
+."Non-bounceable test address, Base64url (for init): " wc wallet_addr 7 .Addr cr
+."Bounceable test address, Base64url (for later access): " wc wallet_addr 6 .Addr cr

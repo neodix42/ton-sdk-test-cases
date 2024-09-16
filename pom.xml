@@ -17,8 +17,28 @@
     <dependencies>
         <dependency>
             <groupId>io.github.neodix42</groupId>
+            <artifactId>fift</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.neodix42</groupId>
+            <artifactId>func</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.neodix42</groupId>
+            <artifactId>address</artifactId>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.neodix42</groupId>
             <artifactId>smartcontract</artifactId>
-            <version>0.5.3</version>
+            <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.neodix42</groupId>
+            <artifactId>cell</artifactId>
+            <version>0.6.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
