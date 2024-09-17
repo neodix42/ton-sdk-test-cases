@@ -1,0 +1,49 @@
+#!/usr/bin/fift -s
+"TonUtil.fif" include
+"Asm.fif" include
+
+// cell-serialization-1
+
+<b b{01} s, 5 32 u, 6 31 u, true 1 i, b> =: cell1
+."cell-serialization-1-cellOutput: " cell1 <s csr. cr
+."cell-serialization-1-bocAsHex: " cell1 2 boc+>B dup Bx. cr
+."cell-serialization-1-cellHash: " cell1 hashu 256 u>B Bx. cr
+
+
+// cell-serialization-2
+
+<b
+x{414243} s,
+"538bd272cc81b9d5f470a18a946cbb8fb621ca57593836014e0f12fd5d34942f" hex$>u 256 u,
+"test sdk" $>B B,
+b> =: cell1
+cell1 <s csr. cr
+true =: allow-bounce
+false =: force-bounce
+false constant bounce
+"0QAljlSWOKaYCuXTx2OCr9P08y40SC2vw3UeM1hYnI3gDY7I" bounce parse-load-address force-bounce or allow-bounce and =: bounce 2=: dest_addr
+
+<b
+"568E7E73CDA9C3D5FF8641E77EED4EE65EDB702EA100290F2E7A043771C9CA5A" hex$>u 256 i,
+"2.56" $>GR Gram,
+dest_addr Addr,
+cell1 ref,
+b> =: cell2
+
+."cell-serialization-2-cellOutput: " cell2 <s csr. ."end" cr
+."cell-serialization-2-bocAsHexWithCrcOnly: " cell2 2 boc+>B dup Bx. cr
+."cell-serialization-2-bocAsHexWithIndexOnly: " cell2 1 boc+>B dup Bx. cr
+."cell-serialization-2-bocAsHexWithCrcAndIndex: " cell2 3 boc+>B dup Bx. cr
+."cell-serialization-2-cellHash: " cell2 hashu 256 u>B Bx. cr
+
+
+// cell-serialization-3
+
+<b b{1} s, b> =: cell1
+<b x{17} s, cell1 ref, b> =: cell2
+<b b{00} s, cell2 ref, b> =: cell3
+<b 0 Gram, cell3 ref, b> =: cell4
+<b x{2d43} s, cell4 ref, cell3 ref, cell2 ref, cell1 ref, b> =: cell5
+."cell-serialization-3-cell5Output: " cell5 <s csr. cr ."end" cr
+."cell-serialization-3-cell5bocAsHexWithCrcOnly: " cell5 2 boc+>B dup Bx. cr
+."cell-serialization-3-cell5Hash: " cell5 hashu 256 u>B Bx. cr

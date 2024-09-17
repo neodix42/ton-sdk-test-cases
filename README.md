@@ -70,7 +70,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### Cell
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellSerialization.java))
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellSerialization.java))
 
 1. Basic cell serialization to fift output format and BoC (Bag of Cells).
 2. Cell serialization with one reference cell and applying various combinations of BoC
