@@ -19,7 +19,7 @@ public class TestFiftRunner {
     @Test
     public void testFiftRunner() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/test.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/test.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -32,7 +32,7 @@ public class TestFiftRunner {
     @Test
     public void testV3R2CodeCell() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/wallets/wallet-v3-code.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/wallets/wallet-v3-code.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -45,7 +45,7 @@ public class TestFiftRunner {
     @Test
     public void testV3R2CreateWalletContract2() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/wallets/new-wallet-v3.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/wallets/new-wallet-v3.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -58,7 +58,7 @@ public class TestFiftRunner {
     @Test
     public void testV3R2CreateWalletContract3() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/wallets/new-wallet-v3.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/wallets/new-wallet-v3.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -71,7 +71,7 @@ public class TestFiftRunner {
     @Test
     public void testV4R2CodeCell() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/wallets/print-v4-hex.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/wallets/print-v4-hex.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -84,7 +84,7 @@ public class TestFiftRunner {
     @Test
     public void testCells() throws URISyntaxException {
 
-        URL resource = TestFiftRunner.class.getResource("/fift/cell.fif");
+        URL resource = TestFiftRunner.class.getResource("/fift-tests/cell.fif");
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 

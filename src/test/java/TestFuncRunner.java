@@ -19,7 +19,7 @@ public class TestFuncRunner {
     @Test
     public void testV4R2CodeCell() throws URISyntaxException {
 
-        URL resource = TestFuncRunner.class.getResource("/fift/wallets/wallet-v4-code.fc");
+        URL resource = TestFuncRunner.class.getResource("/fift-tests/wallets/wallet-v4-code.fc");
         File funcFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = funcFile.getAbsolutePath();
 
@@ -32,7 +32,7 @@ public class TestFuncRunner {
     @Test
     public void testV4R2PluginCodeCell() throws URISyntaxException {
 
-        URL resource = TestFuncRunner.class.getResource("/fift/wallets/simple-subscription-plugin.fc");
+        URL resource = TestFuncRunner.class.getResource("/fift-tests/wallets/simple-subscription-plugin.fc");
         File funcFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = funcFile.getAbsolutePath();
 

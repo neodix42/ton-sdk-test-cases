@@ -4,7 +4,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ## Use cases
 
-### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java))
+### [Address](https://github.com/neodix42/ton-sdk-test-cases/blob/main/address.json) (implemented: [fift](./src/test/resources/fift-tests/address.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/address/src/test/java/org/ton/java/address/TestTonSdkTestCasesAddress.java))
 
 1. Test conversion of raw address in a base chain.
 2. Test conversion of raw address in a master chain.
@@ -25,12 +25,12 @@ Generic set of use cases for testing implementation of various TON libraries and
 2. Check toncoin sum and rounding to 2 decimals HALF_UP.
 3. Check toNano() or similar. No rounding, truncate >9 decimals.
 4. Check parsing fromNano() or similar.
-5. Check toNano() overflow.
+5. Check toNano() overflow.[cryptography.json](cryptography.json)
 6. Check fromNano() overflow.
 7. Check fromNano() near max value overflow, 2^120.
 8. Check fromNano() max value, 2^120-1.
 
-### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java))
+### [Cryptography](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cryptography.json) (implemented: [fift](./src/test/resources/fift-tests/cryptography.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/utils/src/test/java/org/ton/java/utils/TestTonSdkTestCasesCryptography.java))
 
 1. CRC32C algorithm using the polynomial 0x1EDC6F41 tests.
 2. CRC-16/XMODEM algorithm tests.

@@ -1,0 +1,68 @@
+#!/usr/bin/fift -s
+"TonUtil.fif" include
+"Asm.fif" include
+
+// cryptography-1
+"" $>B crc32c =: result1
+"1" $>B crc32c =: result2
+"short test string" $>B crc32c =: result3
+"" { "a" $+ } 1000000 times $>B crc32c =: result4
+
+
+."cryptography-1-result-1: " result1 . cr
+."cryptography-1-result-2: " result2 . cr
+."cryptography-1-result-3: " result3 . cr
+."cryptography-1-result-4: " result4 . cr
+
+
+// cryptography-2
+"" $>B crc16 =: result1
+"1" $>B crc16 =: result2
+"short test string" $>B crc16 =: result3
+"" { "a" $+ } 1000000 times $>B crc16 =: result4
+
+
+."cryptography-2-result-1: " result1 . cr
+."cryptography-2-result-2: " result2 . cr
+."cryptography-2-result-3: " result3 . cr
+."cryptography-2-result-4: " result4 . cr
+
+
+// cryptography-3
+"" $>B Bhashu =: result1
+"1" $>B Bhashu =: result2
+"short test string" $>B Bhashu =: result3
+"" { "a" $+ } 1000000 times $>B Bhashu =: result4
+
+
+."cryptography-3-result-1: " result1 256 u>B B>base64 type cr
+."cryptography-3-result-2: " result2 256 u>B B>base64 type cr
+."cryptography-3-result-3: " result3 256 u>B B>base64 type cr
+."cryptography-3-result-4: " result4 256 u>B B>base64 type cr
+
+
+// cryptography-4
+// Fift does not have sha-1 operations
+
+
+// cryptography-5
+"F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4" hex$>u 256 u>B =: wallet_pk
+// ."wallet prv-key " wallet_pk Bx. cr
+// ."wallet pub-key " wallet_pk priv>pub Bx. cr
+
+"" $>B wallet_pk ed25519_sign =: result1
+"1" $>B wallet_pk ed25519_sign =: result2
+"short test string" $>B wallet_pk ed25519_sign =: result3
+"" { "a" $+ } 1000000 times $>B wallet_pk ed25519_sign =: result4
+
+."cryptography-5-result-1: " result1 B>base64 type cr
+."cryptography-5-result-2: " result2 B>base64 type cr
+."cryptography-5-result-3: " result3 B>base64 type cr
+."cryptography-5-result-4: " result4 B>base64 type cr
+
+// cryptography-6
+// Fift does not have MD5 operations
+
+
+
+

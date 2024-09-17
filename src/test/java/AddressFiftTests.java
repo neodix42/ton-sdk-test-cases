@@ -25,7 +25,7 @@ public class AddressFiftTests {
 
     Gson gson = new GsonBuilder().setObjectToNumberStrategy(ToNumberPolicy.LONG_OR_DOUBLE).create();
 
-    URL resource = TestFiftRunner.class.getResource("/fift/address.fif");
+    URL resource = TestFiftRunner.class.getResource("/fift-tests/address.fif");
     File fiftFile = Paths.get(resource.toURI()).toFile();
 
     String fileContentWithUseCases = IOUtils.toString(Paths.get(Paths.get("").toAbsolutePath() + "/address.json").toUri());
