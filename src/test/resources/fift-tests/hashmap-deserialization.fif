@@ -1,0 +1,17 @@
+#!/usr/bin/fift -s
+"TonUtil.fif" include
+"Asm.fif" include
+
+16 constant key-bits
+16 constant val-bits
+{ val-bits u, } : val,
+{ val-bits u@ } : val@
+{ dup null? { ."(null) " drop } { val@ . } cond } : .val
+{ key-bits { swap . ."-> " .val ."; " true } dictforeach drop cr } : show-dict
+{ key-bits { swap . ."-> " .val ."; " true } idictforeach drop cr } : show-idict
+
+// hashmap-deserialization-4
+
+B{B5EE9C72410106010020000101C0010202C8020302016204050007BEFDF2180007A68054C00007A08090C08D16037D} B>boc =: boc
+
+."hashmap-deserialization-4-result: " boc <s dict@ show-dict

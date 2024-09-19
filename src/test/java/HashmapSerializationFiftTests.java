@@ -33,7 +33,6 @@ public class HashmapSerializationFiftTests {
 
     @BeforeClass
     public static void setUpBeforeClass() throws URISyntaxException {
-        log.info("executing fift script, might take long time...");
         URL resource = TestFiftRunner.class.getResource("/fift-tests/hashmap-serialization.fif");
         assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
