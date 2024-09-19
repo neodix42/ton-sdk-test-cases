@@ -37,7 +37,7 @@
       }
     },
     "smartcontracts-4": {
-      "description": "Create transfer message using Wallet V3R2. With bounce flag. Final BoC with checksum. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1 -t 1000",
+      "description": "Create transfer message using Wallet V3R2. With bounce flag. Final BoC with checksum. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1 -b -t 1753376922 -m 3",
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "walletId": 42,
@@ -53,7 +53,7 @@
       }
     },
     "smartcontracts-5": {
-      "description": "Create transfer message using Wallet V3R2. Without bounce flag. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1 -n -t 1000",
+      "description": "Create transfer message using Wallet V3R2. Without bounce flag. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1.15 -n -t 1753376922 -m 3",
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "walletId": 42,
@@ -69,7 +69,7 @@
       }
     },
     "smartcontracts-6": {
-      "description": "Create transfer message using Wallet V3R2. With bounce flag and comment. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1 -t 1000 -C gift",
+      "description": "Create transfer message using Wallet V3R2. With bounce flag and comment. Equivalent command: fift -s wallet-v3.fif new-wallet 0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d 42 1 1 -b -t 1753376922 -m 3 -C gift",
       "input": {
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": 0,
