@@ -13,9 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
-import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -57,9 +55,9 @@ public class CellSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = sb(result, "cell-serialization-1-cellOutput: ", "\n").trim().toLowerCase();
-        String actualResult2 = sb(result, "cell-serialization-1-bocAsHex: ", "\n").trim().toLowerCase();
-        String actualResult3 = sb(result, "cell-serialization-1-cellHash: ", "\n").trim().toLowerCase();
+        String actualResult1 = UtilsStr.sb(result, "cell-serialization-1-cellOutput: ", "\n").trim().toLowerCase();
+        String actualResult2 = UtilsStr.sb(result, "cell-serialization-1-bocAsHex: ", "\n").trim().toLowerCase();
+        String actualResult3 = UtilsStr.sb(result, "cell-serialization-1-cellHash: ", "\n").trim().toLowerCase();
 
         String expectedCellOutput = (String) testCase.getExpectedOutput().get("cellOutput");
         String expectedBocAsHex = (String) testCase.getExpectedOutput().get("bocAsHex");
@@ -85,11 +83,11 @@ public class CellSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = sb(result, "cell-serialization-2-cellOutput: ", "end").trim().replaceAll("\\r", "");
-        String actualResult2 = sb(result, "cell-serialization-2-bocAsHexWithCrcOnly: ", "\n").trim();
-        String actualResult3 = sb(result, "cell-serialization-2-bocAsHexWithIndexOnly: ", "\n").trim();
-        String actualResult4 = sb(result, "cell-serialization-2-bocAsHexWithCrcAndIndex: ", "\n").trim();
-        String actualResult5 = sb(result, "cell-serialization-2-cellHash: ", "\n").trim().toLowerCase();
+        String actualResult1 = UtilsStr.sb(result, "cell-serialization-2-cellOutput: ", "end").trim().replaceAll("\\r", "");
+        String actualResult2 = UtilsStr.sb(result, "cell-serialization-2-bocAsHexWithCrcOnly: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "cell-serialization-2-bocAsHexWithIndexOnly: ", "\n").trim();
+        String actualResult4 = UtilsStr.sb(result, "cell-serialization-2-bocAsHexWithCrcAndIndex: ", "\n").trim();
+        String actualResult5 = UtilsStr.sb(result, "cell-serialization-2-cellHash: ", "\n").trim().toLowerCase();
 
 
         String expectedCellOutput = (String) testCase.getExpectedOutput().get("cellOutput");
@@ -120,9 +118,9 @@ public class CellSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = sb(result, "cell-serialization-3-cell5Output: ", "end").trim().replaceAll("\\r", "");
-        String actualResult2 = sb(result, "cell-serialization-3-cell5bocAsHexWithCrcOnly: ", "\n").trim();
-        String actualResult3 = sb(result, "cell-serialization-3-cell5Hash: ", "\n").trim();
+        String actualResult1 = UtilsStr.sb(result, "cell-serialization-3-cell5Output: ", "end").trim().replaceAll("\\r", "");
+        String actualResult2 = UtilsStr.sb(result, "cell-serialization-3-cell5bocAsHexWithCrcOnly: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "cell-serialization-3-cell5Hash: ", "\n").trim();
 
 
         String expectedCellOutput = (String) testCase.getExpectedOutput().get("cell5Output");
@@ -132,60 +130,5 @@ public class CellSerializationFiftTests {
         assertThat(actualResult1).isEqualTo(expectedCellOutput.trim());
         assertThat(actualResult2.toLowerCase()).isEqualTo(expectedBocAsHexWithCrcOnly);
         assertThat(actualResult3.toLowerCase()).isEqualTo(expectedCellHash);
-    }
-
-    private static String sb(String str, String from, String to) {
-        if (str == null || from == null || to == null) {
-            return null;
-        }
-
-        byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
-        byte[] fromBytes = from.getBytes(StandardCharsets.UTF_8);
-        byte[] toBytes = to.getBytes(StandardCharsets.UTF_8);
-
-        int startIndex = indexOf(bytes, fromBytes, 0);
-        if (startIndex == -1) {
-            return null;
-        }
-        startIndex += fromBytes.length;
-
-        int endIndex = indexOf(bytes, toBytes, startIndex);
-        if (endIndex == -1) {
-            return null;
-        }
-
-        byte[] resultBytes = Arrays.copyOfRange(bytes, startIndex, endIndex);
-        return new String(resultBytes, StandardCharsets.UTF_8);
-    }
-
-    private static int indexOf(byte[] array, byte[] target, int fromIndex) {
-        if (target.length == 0) {
-            return fromIndex;
-        }
-        if (target.length > array.length) {
-            return -1;
-        }
-
-        int[] a = new int[256];
-        for (int i = 0; i < target.length; i++) {
-            a[target[i] & 0xFF] = i;
-        }
-
-        int m = target.length;
-        int n = array.length;
-
-        int s = fromIndex;
-        while (s <= n - m) {
-            int j = m - 1;
-            while (j >= 0 && target[j] == array[s + j]) {
-                j--;
-            }
-            if (j < 0) {
-                return s;
-            } else {
-                s += Math.max(1, j - a[array[s + j] & 0xFF]);
-            }
-        }
-        return -1;
     }
 }

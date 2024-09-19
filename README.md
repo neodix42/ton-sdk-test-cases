@@ -25,7 +25,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 2. Check toncoin sum and rounding to 2 decimals HALF_UP.
 3. Check toNano() or similar. No rounding, truncate >9 decimals.
 4. Check parsing fromNano() or similar.
-5. Check toNano() overflow.[cryptography.json](cryptography.json)
+5. Check toNano() overflow.
 6. Check fromNano() overflow.
 7. Check fromNano() near max value overflow, 2^120.
 8. Check fromNano() max value, 2^120-1.
@@ -77,7 +77,7 @@ Generic set of use cases for testing implementation of various TON libraries and
    serialization flags.
 3. Testing cell's depth, refs and bits descriptor calculations.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellDeserialization.java))
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellDeserialization.java))
 
 1. Basic cell deserialization.
 2. Basic cell with refs deserialization.
@@ -108,7 +108,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TON Hashmaps
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapSerialization.java))
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapSerialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with one entry serialization.
@@ -199,7 +199,7 @@ public void testWalletV3R2Creation() throws IOException {
 
     // test the functionality of your library
 
-    TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(Utils.hexToSignedBytes(prvKey));
+    TweetNaclFast.Signature.KeyPair keyPair = TweetNaclFast.Signature.keyPair_fromSeed(UtilsStr.hexToSignedBytes(prvKey));
 
     WalletV3R2 contract = WalletV3R2.builder()
         .wc(workchain)
@@ -211,7 +211,7 @@ public void testWalletV3R2Creation() throws IOException {
 
     Message msg = contract.prepareDeployMsg();
 
-    String actualExtMsgForSerializationAsBoc = Utils.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
+    String actualExtMsgForSerializationAsBoc = UtilsStr.bytesToHex(msg.toCell().toBoc(true)).toUpperCase();
 
     // fetch the expected result and compare it against the actual one
     String expectedRawAddress = (String)testCase.getExpectedOutput().get("rawAddress");

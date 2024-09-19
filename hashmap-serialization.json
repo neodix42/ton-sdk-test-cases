@@ -17,7 +17,7 @@
       "expectedOutput": {
         "cellPrint": "x{2_}\n x{2_}\n  x{BE43_}\n  x{BC85_}\n x{2_}\n  x{BAC7_}\n  x{B909_}",
         "cellHash": "dafd9316480871abd6444cfe5885c967cee25240e8606e629a6e516722b2d0bb",
-        "cellBocWithCrc": "b5ee9c7241010701001f00020120010402012002030003be430003bc8502012005060003bac70003b909bfadec84"
+        "cellBocWithCrc": "B5EE9C7241010701001F000201200102020120030402012005060003BE430003BC850003BAC70003B9099A785C76"
       }
     },
     "hashmap-serialization-2": {
