@@ -8,7 +8,6 @@
 { val-bits u@ } : val@
 { dup null? { ."(null) " drop } { val@ . } cond } : .val
 { key-bits { swap . ."-> " .val ."; " true } dictforeach drop cr } : show-dict
-{ key-bits { swap . ."-> " .val ."; " true } idictforeach drop cr } : show-idict
 
 // hashmap-deserialization-4
 

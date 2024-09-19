@@ -119,7 +119,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 7. PfxHashmap serialization.
 8. PfxHashmapE serialization.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapDeserialization.java))
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapDeserialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with both edges deserialization.
