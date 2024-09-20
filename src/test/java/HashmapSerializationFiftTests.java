@@ -124,4 +124,60 @@ public class HashmapSerializationFiftTests {
         assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
         assertThat(actualResult3).isEqualTo(expectedResultCellBocWithCrc);
     }
+
+    @Test
+    public void testHashmapSerialization9() {
+
+        log.info("{}", result);
+
+        String testId = "hashmap-serialization-9";
+        // select particular test case by category name and test id
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
+
+        // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
+        String description = testCase.getDescription();
+
+        log.info("testId: {}", testId);
+        log.info("description: {}", description);
+
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-9-cellPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-9-cellHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-9-cellBocWithCrc: ", "\n").trim();
+
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+
+        assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
+        assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
+        assertThat(actualResult3).isEqualTo(expectedResultCellBocWithCrc);
+    }
+
+    @Test
+    public void testHashmapSerialization10() {
+
+        log.info("{}", result);
+
+        String testId = "hashmap-serialization-10";
+        // select particular test case by category name and test id
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
+
+        // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
+        String description = testCase.getDescription();
+
+        log.info("testId: {}", testId);
+        log.info("description: {}", description);
+
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-10-cellPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-10-cellHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-10-cellBocWithCrc: ", "\n").trim();
+
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+
+        assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
+        assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
+        assertThat(actualResult3).isEqualTo(expectedResultCellBocWithCrc);
+    }
 }

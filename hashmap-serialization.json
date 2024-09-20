@@ -71,9 +71,9 @@
         "value1": "0QAljlSWOKaYCuXTx2OCr9P08y40SC2vw3UeM1hYnI3gDY7I"
       },
       "expectedOutput": {
-        "cellPrint": "x{A4C93FCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCE_}",
-        "cellHash": "793C3E82331394E6FE946AB51B8FF9ED1C20052A7F51BE18769CD9F509D9F20D",
-        "cellBocWithCrc": "B5EE9C72410101010026000047A4C93FCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCE099AB478B"
+        "cellPrint": "x{A4C900096395258E29A602B974F1D8E0ABF4FD3CCB8D120B6BF0DD478CD616272378036_}",
+        "cellHash": "2A00D0403B08EA7E16C274C4C7F96644940D1DCD2256B4FDA40B0465660B8664",
+        "cellBocWithCrc": "B5EE9C72410101010026000047A4C900096395258E29A602B974F1D8E0ABF4FD3CCB8D120B6BF0DD478CD6162723780360B53AF670"
       }
     },
     "hashmap-serialization-6": {
@@ -126,6 +126,38 @@
         "cellPrint": "x{3_}\n x{3_}\n  x{BE41}\n  x{BC82}\n x{3_}\n  x{BAC3}\n  x{B904}",
         "cellHash": "DF28C67A84CC778AD9D71BEF19B14D818D1576FEA31665135AC38D4D5E5DD7C3",
         "cellBocWithCrc": "B5EE9C7241010701001F000201300102020130030402013005060004BE410004BC820004BAC30004B904F49AD743"
+      }
+    },
+    "hashmap-serialization-9": {
+      "description": "HashmapE with one entry serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "key1": 100,
+        "value1": 1
+      },
+      "expectedOutput": {
+        "cellPrint": "x{A4C86_}",
+        "cellHash": "81A3F287E8201232ACB95D20AA5404D71400616B66E63BE68887375D5341FCF3",
+        "cellBocWithCrc": "B5EE9C72410101010005000005A4C86083C4C62B"
+      }
+    },
+    "hashmap-serialization-10": {
+      "description": "HashmapE with 4 entries serialization.",
+      "input": {
+        "keySizeBits": 9,
+        "key1": 100,
+        "value1": 1,
+        "key2": 200,
+        "value2": 2,
+        "key3": 300,
+        "value3": 3,
+        "key4": 400,
+        "value4": 4
+      },
+      "expectedOutput": {
+        "cellPrint": "x{2_}\n x{2_}\n  x{BE43_}\n  x{BC85_}\n x{2_}\n  x{BAC7_}\n  x{B909_}",
+        "cellHash": "DAFD9316480871ABD6444CFE5885C967CEE25240E8606E629A6E516722B2D0BB",
+        "cellBocWithCrc": "B5EE9C7241010701001F000201200102020120030402012005060003BE430003BC850003BAC70003B9099A785C76"
       }
     }
   }
