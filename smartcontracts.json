@@ -298,6 +298,7 @@
         "privateKey": "F182111193F30D79D517F2339A1BA7C25FDF6C52142F0F2C1D960A1F1D65E1E4",
         "workchain": 0,
         "walletId": 42,
+        "allowAuthSignature": true,
         "seqNo": 1,
         "destinationAddress": "0:258e549638a6980ae5d3c76382afd3f4f32e34482dafc3751e3358589c8de00d",
         "amountTonCoins": 1,
