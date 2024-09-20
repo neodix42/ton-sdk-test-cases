@@ -39,7 +39,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 5. Signing with Ed25519 string test.
 6. MD5 tests.
 
-### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java))
+### [Wallets](https://github.com/neodix42/ton-sdk-test-cases/blob/main/smartcontracts.json) (implemented: [fift](./src/test/resources/fift-tests/wallets), [ton4j](https://github.com/neodix42/ton4j/blob/main/smartcontract/src/test/java/org/ton/java/smartcontract/TestTonSdkTestCasesSmartContracts.java))
 
 1. Wallet V3R2 code cell serialized.
 2. Creation of Wallet V3R2 deploy external message.
@@ -67,6 +67,9 @@ Generic set of use cases for testing implementation of various TON libraries and
     single random address.
 19. Test bulk jetton transfer using HighLoad Wallet V3R1. Send 1 NEOJ (100 with decimals) jettons
     with unique comment to 300 random addresses.
+20. Wallet V5R1 code cell serialized.
+21. Creation of Wallet V5R1 deploy external message. Final BoC with checksum.
+22. Create transfer message using Wallet V5R1. With bounce flag and comment. 
 
 ### Cell
 
