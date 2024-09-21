@@ -3,6 +3,7 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.ToNumberPolicy;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -56,13 +57,13 @@ public class HashmapSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-4-cellPrint: ", "end").replaceAll("\\r", "").trim();
-        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-4-cellHash: ", "\n").trim();
-        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-4-cellBocWithCrc: ", "\n").trim();
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-4-HashMapPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-4-HashMapHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-4-HashMapBocWithCrc: ", "\n").trim();
 
-        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
-        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
-        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("HashMapPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("HashMapHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("HashMapBocWithCrc");
 
         assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
         assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
@@ -84,13 +85,13 @@ public class HashmapSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-5-cellPrint: ", "end").replaceAll("\\r", "").trim();
-        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-5-cellHash: ", "\n").trim();
-        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-5-cellBocWithCrc: ", "\n").trim();
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-5-HashMapPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-5-HashMapHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-5-HashMapBocWithCrc: ", "\n").trim();
 
-        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
-        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
-        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("HashMapPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("HashMapHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("HashMapBocWithCrc");
 
         assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
         assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
@@ -112,13 +113,13 @@ public class HashmapSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-8-cellPrint: ", "end").replaceAll("\\r", "").trim();
-        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-8-cellHash: ", "\n").trim();
-        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-8-cellBocWithCrc: ", "\n").trim();
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-8-HashMapPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-8-HashMapHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-8-HashMapBocWithCrc: ", "\n").trim();
 
-        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
-        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
-        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("HashMapPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("HashMapHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("HashMapBocWithCrc");
 
         assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
         assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
@@ -140,13 +141,13 @@ public class HashmapSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-9-cellPrint: ", "end").replaceAll("\\r", "").trim();
-        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-9-cellHash: ", "\n").trim();
-        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-9-cellBocWithCrc: ", "\n").trim();
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-9-HashMapPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-9-HashMapHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-9-HashMapBocWithCrc: ", "\n").trim();
 
-        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
-        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
-        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("HashMapPrint");
+        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("HashMapHash");
+        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("HashMapBocWithCrc");
 
         assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
         assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
@@ -168,16 +169,26 @@ public class HashmapSerializationFiftTests {
         log.info("testId: {}", testId);
         log.info("description: {}", description);
 
-        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-10-cellPrint: ", "end").replaceAll("\\r", "").trim();
-        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-10-cellHash: ", "\n").trim();
-        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-10-cellBocWithCrc: ", "\n").trim();
+        result = result.replaceAll("\\r", "");
+        String actualResult1 = UtilsStr.sb(result, "hashmap-serialization-10-HashmapPrint: ", "end").replaceAll("\\r", "").trim();
+        String actualResult2 = UtilsStr.sb(result, "hashmap-serialization-10-HashMapHash: ", "\n").trim();
+        String actualResult3 = UtilsStr.sb(result, "hashmap-serialization-10-HashMapBocWithCrc: ", "\n").trim();
+        String actualResult4 = StringUtils.substringBetween(result, "hashmap-serialization-10-cellWithHashmapPrint: ", "flash").replaceAll("\\r", "").trim();
+        String actualResult5 = UtilsStr.sb(result, "hashmap-serialization-10-cellWithHashmapHash: ", "\n").trim();
+        String actualResult6 = UtilsStr.sb(result, "hashmap-serialization-10-cellWithHashmapBoCWithCrc: ", "\n").trim();
 
-        String expectedResultCellPrint = (String) testCase.getExpectedOutput().get("cellPrint");
-        String expectedResultCellHash = (String) testCase.getExpectedOutput().get("cellHash");
-        String expectedResultCellBocWithCrc = (String) testCase.getExpectedOutput().get("cellBocWithCrc");
+        String expectedResultHashMapPrint = (String) testCase.getExpectedOutput().get("HashMapPrint");
+        String expectedResultHashMapHash = (String) testCase.getExpectedOutput().get("HashMapHash");
+        String expectedResultHashMapBocWithCrc = (String) testCase.getExpectedOutput().get("HashMapBocWithCrc");
+        String expectedResultCellWithHashMapPrint = (String) testCase.getExpectedOutput().get("cellWithHashMapPrint");
+        String expectedResultCellWithHashMapHash = (String) testCase.getExpectedOutput().get("cellWithHashMapHash");
+        String expectedResultCellWithHashMapBocWithCrc = (String) testCase.getExpectedOutput().get("cellWithHashMapBocWithCrc");
 
-        assertThat(actualResult1).isEqualTo(expectedResultCellPrint);
-        assertThat(actualResult2).isEqualTo(expectedResultCellHash.toUpperCase());
-        assertThat(actualResult3).isEqualTo(expectedResultCellBocWithCrc);
+        assertThat(actualResult1).isEqualTo(expectedResultHashMapPrint);
+        assertThat(actualResult2).isEqualTo(expectedResultHashMapHash.toUpperCase());
+        assertThat(actualResult3).isEqualTo(expectedResultHashMapBocWithCrc);
+        assertThat(actualResult4).isEqualTo(expectedResultCellWithHashMapPrint);
+        assertThat(actualResult5).isEqualTo(expectedResultCellWithHashMapHash);
+        assertThat(actualResult6).isEqualTo(expectedResultCellWithHashMapBocWithCrc);
     }
 }

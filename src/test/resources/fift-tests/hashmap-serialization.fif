@@ -17,9 +17,9 @@ false constant bounce
 <b addr3 Addr, 300 rot 9 b>udict! drop
 <b addr4 Addr, 400 rot 9 b>udict! drop
 dup dup
-."hashmap-serialization-4-cellPrint: "  <s csr. ."end" cr
-."hashmap-serialization-4-cellHash: " hashB Bx. cr
-."hashmap-serialization-4-cellBocWithCrc: " 2 boc+>B dup Bx. cr cr
+."hashmap-serialization-4-HashMapPrint: "  <s csr. ."end" cr
+."hashmap-serialization-4-HashMapHash: " hashB Bx. cr
+."hashmap-serialization-4-HashMapBocWithCrc: " 2 boc+>B dup Bx. cr cr
 
 
 // hashmap-serialization-5
@@ -27,9 +27,9 @@ dup dup
 // <b swap ref, swap Values @ 256 b>udict!+
 <b addr1 Addr, 100 dictnew 9 b>udict! drop
 dup dup
-."hashmap-serialization-5-cellPrint: "  <s csr. ."end" cr
-."hashmap-serialization-5-cellHash: " hashB Bx. cr
-."hashmap-serialization-5-cellBocWithCrc: " 2 boc+>B dup Bx. cr
+."hashmap-serialization-5-HashMapPrint: "  <s csr. ."end" cr
+."hashmap-serialization-5-HashMapHash: " hashB Bx. cr
+."hashmap-serialization-5-HashMapBocWithCrc: " 2 boc+>B dup Bx. cr
 
 
 // hashmap-serialization-8
@@ -39,29 +39,35 @@ dup dup
 <b 3 3 u, b> <s <b 300 9 u, b> <s rot 9 pfxdict! drop
 <b 4 3 u, b> <s <b 400 9 u, b> <s rot 9 pfxdict! drop
 dup dup
-."hashmap-serialization-8-cellPrint: "  <s csr. ."end" cr
-."hashmap-serialization-8-cellHash: " hashB Bx. cr
-."hashmap-serialization-8-cellBocWithCrc: " 2 boc+>B dup Bx. cr cr
+."hashmap-serialization-8-HashMapPrint: "  <s csr. ."end" cr
+."hashmap-serialization-8-HashMapHash: " hashB Bx. cr
+."hashmap-serialization-8-HashMapBocWithCrc: " 2 boc+>B dup Bx. cr cr
 
 
 // hashmap-serialization-9
 
 <b 1 3 u, 100 dictnew 9 b>udict! drop
-dup dup dup
+dup dup dup dup
 ."hashmap-serialization-9-show-1st: " 100 swap 9 udict@ drop 3 u@ . cr
-."hashmap-serialization-9-cellPrint: "  <s csr. ."end" cr
-."hashmap-serialization-9-cellHash: " hashB Bx. cr
-."hashmap-serialization-9-cellBocWithCrc: " 2 boc+>B dup Bx. cr cr
-
-
+."hashmap-serialization-9-HashMapPrint: "  <s csr. ."end" cr
+."hashmap-serialization-9-HashMapHash: " hashB Bx. cr
+."hashmap-serialization-9-HashMapBocWithCrc: " 2 boc+>B dup Bx. cr cr
+drop
+."hashmap-serialization-9-cellWithHashmapPrint: " <b swap dict, b> <s csr. cr
 // hashmap-serialization-10
 
 <b 1 3 u, 100 dictnew 9 b>udict! drop
 <b 2 3 u, 200 rot 9 b>udict! drop
 <b 3 3 u, 300 rot 9 b>udict! drop
 <b 4 3 u, 400 rot 9 b>udict! drop
-dup dup dup
+dup dup dup dup dup dup dup dup
+."hashmap-serialization-10-show-1st: " 100 swap 9 udict@ drop 3 u@ . cr
 ."hashmap-serialization-10-show-4th: " 400 swap 9 udict@ drop 3 u@ . cr
-."hashmap-serialization-10-cellPrint: "  <s csr. ."end" cr
-."hashmap-serialization-10-cellHash: " hashB Bx. cr
-."hashmap-serialization-10-cellBocWithCrc: " 2 boc+>B dup Bx. cr cr
+."hashmap-serialization-10-HashmapPrint: "  <s csr. ."end" cr
+."hashmap-serialization-10-HashMapHash: " hashB Bx. cr
+."hashmap-serialization-10-HashMapBocWithCrc: " 2 boc+>B dup Bx. cr cr
+drop
+<b swap dict, b> =: bocWithHashMap
+."hashmap-serialization-10-cellWithHashmapPrint: " bocWithHashMap <s csr. ."flash" cr
+."hashmap-serialization-10-cellWithHashmapHash: "  bocWithHashMap hashB Bx. cr
+."hashmap-serialization-10-cellWithHashmapBoCWithCrc: "  bocWithHashMap 2 boc+>B dup Bx. cr cr
