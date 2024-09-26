@@ -73,14 +73,14 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### Cell
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellSerialization.java))
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-serialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesCellSerialization.java))
 
 1. Basic cell serialization to fift output format and BoC (Bag of Cells).
 2. Cell serialization with one reference cell and applying various combinations of BoC
    serialization flags.
 3. Testing cell's depth, refs and bits descriptor calculations.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesCellDeserialization.java))
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/cell-deserialization.json) (implemented: [fift](./src/test/resources/fift-tests/cell-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesCellDeserialization.java))
 
 1. Basic cell deserialization.
 2. Basic cell with refs deserialization.
@@ -95,13 +95,13 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TL-B
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesTlbSerialization.java))
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-serialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesTlbSerialization.java))
 
 1. MsgAddress serialization.
 2. ShardIdent construction, parent and children lookup.
 3. StorageInfo.storage_info$_ serialization
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesTlbDeserialization.java))
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/tlb-deserialization.json) (implemented: [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesTlbDeserialization.java))
 
 1. CommonMsgInfo.int_msg_info$0 deserialization.
 2. CommonMsgInfo.ext_in_msg_info$10 deserialization.
@@ -111,7 +111,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 
 ### TON Hashmaps
 
-#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapSerialization.java))
+#### [Serialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-serialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-serialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesHashmapSerialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with one entry serialization.
@@ -122,7 +122,7 @@ Generic set of use cases for testing implementation of various TON libraries and
 7. PfxHashmap serialization.
 8. PfxHashmapE serialization.
 
-#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/TestTonSdkTestCasesHashmapDeserialization.java))
+#### [Deserialization](https://github.com/neodix42/ton-sdk-test-cases/blob/main/hashmap-deserialization.json) (implemented:  [fift](./src/test/resources/fift-tests/hashmap-deserialization.fif), [ton4j](https://github.com/neodix42/ton4j/blob/main/cell/src/test/java/org/ton/java/sdk/TestTonSdkTestCasesHashmapDeserialization.java))
 
 1. Hashmap serialization.
 2. Hashmap with both edges deserialization.

@@ -104,8 +104,8 @@
       },
       "expectedOutput": {
         "HashMapPrint": "x{3_}\n x{3_}\n  x{BE41}\n  x{BC82}\n x{3_}\n  x{BAC3}\n  x{B904}",
-        "HashMapHash": "df28c67a84cc778ad9d71bef19b14d818d1576fea31665135ac38d4d5e5dd7c3",
-        "HashMapBocWithCrc": "b5ee9c7241010701001f00020130010402013002030004be410004bc8202013005060004bac30004b9047fa5e8c7"
+        "HashMapHash": "DF28C67A84CC778AD9D71BEF19B14D818D1576FEA31665135AC38D4D5E5DD7C3",
+        "HashMapBocWithCrc": "B5EE9C7241010701001F000201300102020130030402013005060004BE410004BC820004BAC30004B904F49AD743"
       }
     },
     "hashmap-serialization-8": {
@@ -146,6 +146,7 @@
       "description": "HashmapE with 4 entries serialization.",
       "input": {
         "keySizeBits": 9,
+        "valueSizeBits": 3,
         "key1": 100,
         "value1": 1,
         "key2": 200,
