@@ -33,6 +33,39 @@ public class SmartcontractsFiftTests {
      */
 
     @Test
+    public void testSmartcontracts2() throws URISyntaxException {
+
+        String testId = "smartcontracts-2";
+        // select particular test case by category name and test id
+        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
+
+        // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
+        String description = testCase.getDescription();
+
+        log.info("testId: {}", testId);
+        log.info("description: {}", description);
+
+        URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/new-wallet-v3.fif");
+        assert resource != null;
+        File fiftFile = Paths.get(resource.toURI()).toFile();
+        String absolutePath = fiftFile.getAbsolutePath();
+
+        FiftRunner fiftRunner = FiftRunner.builder().build();
+
+        String inputWorkchain = testCase.getInput().get("workchain").toString();
+        String inputWalletId = testCase.getInput().get("walletId").toString();
+
+        String result = fiftRunner.run(fiftFile.getParent(), "-s", absolutePath, inputWorkchain, inputWalletId);
+        log.info("output: {}", result);
+
+        String expectedRawAddress = (String) testCase.getExpectedOutput().get("rawAddress");
+        String expectedExternalMessageBocAsHexWithCrc = (String) testCase.getExpectedOutput().get("externalMessageBocAsHexWithCrc");
+
+        assertThat(result).contains(expectedRawAddress);
+        assertThat(result).contains(expectedExternalMessageBocAsHexWithCrc);
+    }
+
+    @Test
     public void testSmartcontracts03() throws URISyntaxException { // test name changed deliberately to 03, so new-wallet.addr had 0 workchain.
 
         String testId = "smartcontracts-3";
@@ -46,6 +79,7 @@ public class SmartcontractsFiftTests {
         log.info("description: {}", description);
 
         URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/new-wallet-v3.fif");
+        assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -67,39 +101,6 @@ public class SmartcontractsFiftTests {
     }
 
     @Test
-    public void testSmartcontracts2() throws URISyntaxException {
-
-        String testId = "smartcontracts-2";
-        // select particular test case by category name and test id
-        TonSdkTestCases.TestCase testCase = tonSdkTestCases.getTestCases().get(testId);
-
-        // fetch test's description and id. It's always good to show test id, since it is unique across all tests.
-        String description = testCase.getDescription();
-
-        log.info("testId: {}", testId);
-        log.info("description: {}", description);
-
-        URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/new-wallet-v3.fif");
-        File fiftFile = Paths.get(resource.toURI()).toFile();
-        String absolutePath = fiftFile.getAbsolutePath();
-
-        FiftRunner fiftRunner = FiftRunner.builder().build();
-
-        String inputWorkchain = testCase.getInput().get("workchain").toString();
-        String inputWalletId = testCase.getInput().get("walletId").toString();
-
-        String result = fiftRunner.run(fiftFile.getParent(), "-s", absolutePath, inputWorkchain, inputWalletId);
-        log.info("output: {}", result);
-
-        String expectedRawAddress = (String) testCase.getExpectedOutput().get("rawAddress");
-        String expectedExternalMessageBocAsHexWithCrc = (String) testCase.getExpectedOutput().get("externalMessageBocAsHexWithCrc");
-
-        assertThat(result).contains(expectedRawAddress);
-        assertThat(result).contains(expectedExternalMessageBocAsHexWithCrc);
-    }
-
-
-    @Test
     public void testSmartcontracts4() throws URISyntaxException {
 
         String testId = "smartcontracts-4";
@@ -113,6 +114,7 @@ public class SmartcontractsFiftTests {
         log.info("description: {}", description);
 
         URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/wallet-v3.fif");
+        assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -157,6 +159,7 @@ public class SmartcontractsFiftTests {
         log.info("description: {}", description);
 
         URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/wallet-v3.fif");
+        assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -201,6 +204,7 @@ public class SmartcontractsFiftTests {
         log.info("description: {}", description);
 
         URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/wallet-v3.fif");
+        assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
@@ -237,6 +241,7 @@ public class SmartcontractsFiftTests {
     public void testV4R2CodeCell() throws URISyntaxException {
 
         URL resource = SmartcontractsFiftTests.class.getResource("/fift-tests/wallets/print-v4-hex.fif");
+        assert resource != null;
         File fiftFile = Paths.get(resource.toURI()).toFile();
         String absolutePath = fiftFile.getAbsolutePath();
 
